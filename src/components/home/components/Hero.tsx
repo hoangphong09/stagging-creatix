@@ -87,7 +87,7 @@ export default function Hero() {
           {/* Left */}
           <div className="space-y-8">
             <div className="space-y-6">
-              <h1 className="text-4xl lg:text-6xl font-bold leading-tight">
+              <h1 className="text-[56px] font-extrabold leading-tight">
                 <span className="bg-gradient-primary bg-clip-text text-transparent font-vietnam-pro">
                   Creatix Technology
                 </span>
