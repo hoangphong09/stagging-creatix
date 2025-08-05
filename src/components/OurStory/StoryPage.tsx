@@ -2,7 +2,7 @@
 
 export default function StoryPage() {
   return (
-    <div className="min-h-screen bg-[#F8FAFC] flex flex-col items-center px-4 pb-16 relative overflow-hidden">
+    <div className="min-h-screen bg-white flex flex-col items-center px-4 pb-16 relative overflow-hidden">
       {/* Decorative objects */}
       <img
         src="/hire_yellow_shadow_image.svg"
@@ -13,10 +13,10 @@ export default function StoryPage() {
       />
       <img
         src="/story_blur_3.png"
-        alt=""
+        alt="hand with heart"
         aria-hidden="true"
         loading="lazy"
-        className="pointer-events-none select-none absolute left-0 top-[5rem] w-[25vw] max-w-[700px] z-0"
+        className="hidden sm:block pointer-events-none select-none absolute left-0 top-[5rem] sm:w-[15vw] lg:w-[20vw] max-w-[700px] z-0"
       />
       <img
         src="/story_blur_4.png"
@@ -37,18 +37,18 @@ export default function StoryPage() {
         alt=""
         aria-hidden="true"
         loading="lazy"
-        className="pointer-events-none select-none absolute right-0 top-[36vw] w-[25vw] max-w-[700px] z-20"
+        className="hidden sm:block pointer-events-none select-none absolute right-0 top-[36vw] w-[25vw] max-w-[700px] z-20"
       />
 
       {/* Main Title */}
-      <div className="w-full max-w-5xl mx-auto text-center mt-32 mb-8 z-10">
-        <h1 className="text-[72px] font-bold text-creatix-gray-900 mb-2">
+      <div className="w-full max-w-5xl mx-auto text-center mt-32 mb-8 z-10 flex flex-col items-center justify-center gap-4">
+        <h1 className="text-[62px] sm:text-[70px] font-extrabold text-creatix-gray-900 mb-2">
           “ Chúng tôi là Creatix ”
         </h1>
-        <h2 className="text-[70px] font-bold bg-gradient-primary bg-clip-text text-transparent mb-4">
+        <h2 className="text-[62px] sm:text-[64px] font-extrabold bg-gradient-primary bg-clip-text text-transparent mb-4">
           Nơi công nghệ gặp sáng tạo.
         </h2>
-        <p className="text-[24px] text-gray-600 font-normal mb-6">
+        <p className="text-[20px] text-gray-600 font-normal mb-6">
           “Mỗi dự án của chúng tôi đều bắt đầu từ sự thấu hiểu: thấu hiểu người
           dùng, nhu cầu, và những giá trị bạn cần được phát và bằng công nghệ
           linh hoạt và tư duy sáng tạo.”

@@ -160,7 +160,7 @@ export default function JobDescriptionPage() {
             <span className="text-xl">&#8592;</span>
             <p className="hover:underline">Quay lại Tuyển dụng</p>
           </button>
-          <h1 className="text-[48px] font-bold text-creatix-gray-900 mb-6 leading-tight">
+          <h1 className="text-[42px] sm:text-[48px] font-bold text-creatix-gray-900 mb-6 leading-tight">
             {job.title}
           </h1>
           <div className="mb-8 space-y-1 text-lg">

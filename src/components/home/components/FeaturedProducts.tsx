@@ -36,7 +36,7 @@ export default function FeaturedProducts() {
   return (
     <section
       id="product-section"
-      className="py-40 bg-white relative overflow-hidden"
+      className="py-20 sm:py-40 bg-white relative overflow-hidden"
     >
       {/* Background decorative elements */}
       <div className="absolute top-32 -left-4 w-52 h-52 opacity-30">
@@ -50,10 +50,10 @@ export default function FeaturedProducts() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16 space-y-4">
-          <p className="text-[56px] font-bold bg-gradient-secondary bg-clip-text text-transparent ">
+          <p className="text-[42px] sm:text-[56px] font-extrabold bg-gradient-to-b from-[#392F50] to-[#7344C8] bg-clip-text text-transparent ">
             Sản phẩm nổi bật
           </p>
-          <p className="text-xl text-creatix-gray-800 opacity-80 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-xl text-creatix-gray-800 opacity-80 max-w-4xl mx-auto leading-relaxed">
             "Chúng tôi chọn lọc những sản phẩm nổi bật nhất – kết hợp giữa tính
             hữu dụng, trải nghiệm tốt và sự đơn giản trong từng thao tác."
           </p>

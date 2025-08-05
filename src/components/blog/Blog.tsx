@@ -76,7 +76,7 @@ export default function BlogPage() {
   useEffect(() => {
     timeoutRef.current = setTimeout(() => {
       setCurrent((prev) => (prev + 1) % total);
-    }, 5000);
+    }, 50000000); // Adjust the timeout duration as needed
     return () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
@@ -115,15 +115,15 @@ export default function BlogPage() {
       <main className="flex-1 flex flex-col items-center px-4 pt-8 pb-16">
         <section className="w-full max-w-6xl mx-auto">
           <div className="flex flex-col items-center mb-[8rem] mt-[8rem]">
-            <div className="flex items-center gap-3 mb-8">
-              <span className="bg-[#8B5CF6] text-white text-[56px] font-bold px-6 py-2 rounded-xl shadow-lg">
+            <div className="flex items-center gap-3 mb-8 flex-col sm:flex-row">
+              <span className="bg-gradient-to-br from-[#571CEC] to-[#A96CF9] text-white text-[64px] font-extrabold px-6 py-2 rounded-xl shadow-lg">
                 Blog
               </span>
-              <span className="text-[56px] font-bold text-creatix-gray-900">
+              <span className="text-[64px] font-extrabold text-creatix-gray-900">
                 công nghệ
               </span>
             </div>
-            <p className="text-[20px] text-gray-400  text-center max-w-2xl">
+            <p className="text-[20px] text-gray-400 text-center max-w-2xl">
               Khám phá các bài viết mới nhất về AI, công nghệ và đổi mới sáng
               tạo.
             </p>
@@ -309,7 +309,7 @@ export default function BlogPage() {
                 href={`/blog/${post.slug}`}
                 className="bg-transparent rounded-2xl shadow-md overflow-hidden flex flex-col transition hover:shadow-xl"
               >
-                <div className="relative w-full h-[20rem] overflow-hidden">
+                <div className="relative w-full h-[15rem] overflow-hidden">
                   <img
                     src={post.image}
                     alt={post.title}
@@ -323,7 +323,7 @@ export default function BlogPage() {
                   )}
                 </div>
                 <div className="p-5 flex-1 flex flex-col">
-                  <h3 className="font-bold text-lg text-creatix-gray-900 mb-2 flex flex-row items-center gap-1">
+                  <h3 className="font-bold text-2xl text-creatix-gray-900 mb-2 flex flex-row items-center gap-1">
                     {post.title}
                     {post.tag && (
                       <span className="bg-clip-text bg-gradient-to-br from-[#7E39EA] to-[#D92F7F] text-transparent">

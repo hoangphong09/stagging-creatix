@@ -17,7 +17,6 @@ export default function Services() {
       title: "Phân tích và tiếp thị",
       description:
         "Cung cấp các giải pháp phân tích dữ liệu và chiến lược tiếp thị hiệu quả.",
-      hasDetails: true,
     },
     {
       icon: Lightbulb,
@@ -42,19 +41,20 @@ export default function Services() {
       title: "Triển khai dịch vụ AI",
       description:
         "Hỗ trợ triển khai các dịch vụ AI vào hệ thống hiện tại của bạn.",
-      hasDetails: true,
     },
     {
       icon: Zap,
       title: "Cung cấp dịch vụ AI",
       description:
         "Chúng tôi cung cấp dịch vụ AI tiên tiến, tối ưu hiệu suất và hiệu quả kinh doanh.",
-      hasDetails: true,
     },
   ];
 
   return (
-    <section id="service-section" className="py-20 bg-gray-50 relative overflow-hidden">
+    <section
+      id="service-section"
+      className="py-10 sm:py-20 bg-gray-50 relative overflow-hidden"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-16 gap-8">
@@ -64,7 +64,7 @@ export default function Services() {
                 Dịch vụ chúng tôi
               </span>
             </div>
-            <h2 className="text-[48px] font-bold bg-gradient-secondary bg-clip-text text-transparent leading-tight">
+            <h2 className="text-[32px] sm:text-[48px] font-extrabold bg-gradient-to-r from-[#392F50] to-[#7344C8] bg-clip-text text-transparent leading-tight">
               Chúng tôi cung cấp các <br />
               dịch vụ AI
             </h2>
@@ -83,7 +83,7 @@ export default function Services() {
             return (
               <div
                 key={index}
-                className="bg-white rounded-2xl p-8 hover:shadow-lg transition-shadow duration-300 space-y-6"
+                className="bg-white rounded-2xl p-8 hover:shadow-lg transition-shadow duration-300 space-y-6 group"
               >
                 {/* Icon */}
                 <div
@@ -106,15 +106,13 @@ export default function Services() {
                   </p>
                 </div>
 
-                {/* Details Link */}
-                {service.hasDetails && (
-                  <div className="flex items-center gap-2 text-sm font-semibold cursor-pointer group">
-                    <span className="bg-gradient-primary bg-clip-text text-transparent">
-                      Chi tiết
-                    </span>
-                    <ArrowRight className="w-4 h-4 text-purple-600 group-hover:translate-x-1 transition-transform" />
-                  </div>
-                )}
+                {/* Details Link (hover to show) */}
+                <div className="hidden group-hover:flex items-center gap-2 text-sm font-semibold cursor-pointer transition-opacity duration-300">
+                  <span className="bg-gradient-primary bg-clip-text text-transparent">
+                    Chi tiết
+                  </span>
+                  <ArrowRight className="w-4 h-4 text-purple-600 group-hover:translate-x-1 transition-transform" />
+                </div>
               </div>
             );
           })}

@@ -35,24 +35,24 @@ export default function CareersPage() {
     <div className="min-h-screen flex flex-col bg-gradient-to-b from-[#f8fafc] to-white relative overflow-hidden">
       <img
         src="/hire_yellow_shadow_image.svg"
-        alt=""
+        alt="creatix hiring shadow"
         aria-hidden="true"
         loading="lazy"
         className="pointer-events-none select-none absolute left-[10rem] top-[1rem] w-[25vw] max-w-[700px] z-0"
       />
       <img
         src="/hire_purple_shadow_image.svg"
-        alt=""
+        alt="creatix hiring shadow"
         aria-hidden="true"
         loading="lazy"
         className="pointer-events-none select-none absolute right-[-15vw] top-[-10vw] w-[40vw] max-w-[700px] z-0"
       />
       <main className="flex-1 flex flex-col items-center px-4 py-10">
         <div className="max-w-3xl w-full flex flex-col items-center">
-          <h1 className="text-[48px] font-bold text-center text-creatix-gray-900 mb-1 mt-16">
+          <h1 className="text-[36px] sm:text-[64px] font-extrabold text-center text-creatix-gray-900 mb-1 mt-16">
             Gia nhập đội ngũ
           </h1>
-          <h2 className="text-[52px] bg-gradient-primary bg-clip-text text-transparent font-bold mb-16">
+          <h2 className="text-[36px] sm:text-[64px] bg-gradient-primary bg-clip-text text-transparent font-extrabold mb-16 text-center">
             Creatix Technology
           </h2>
           <div className="w-full flex justify-center mb-10">
@@ -68,10 +68,10 @@ export default function CareersPage() {
             />
           </div>
           <section className="w-full max-w-[720px] mx-auto mt-16 mb-20">
-            <h3 className="text-[48px] font-bold text-creatix-gray-900 text-center mb-3 leading-tight">
+            <h3 className="text-[36px] sm:text-[48px] font-bold text-creatix-gray-900 text-center mb-3 leading-tight">
               Các vị trí đang tuyển
             </h3>
-            <p className="text-center text-[20px] text-gray-400 mb-16 font-normal">
+            <p className="text-center text-base sm:text-[20px] text-gray-400 mb-16 font-normal">
               “Khám phá cơ hội nghề nghiệp cùng môi trường công nghệ năng động.”
             </p>
             <div className="space-y-6 mb-10">

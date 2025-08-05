@@ -2,6 +2,20 @@
 
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { useEffect, useState } from "react";
+
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkScreen = () => setIsMobile(window.innerWidth < 640); // Tailwind 'sm' is 640px
+    checkScreen();
+    window.addEventListener("resize", checkScreen);
+    return () => window.removeEventListener("resize", checkScreen);
+  }, []);
+
+  return isMobile;
+}
 
 export default function Career() {
   const jobs = [
@@ -19,11 +33,17 @@ export default function Career() {
       title: "Cộng Tác Viên Mạng Xã Hội",
       description:
         "Sáng tạo nội dung video ngắn cho TikTok, Instagram,Facebook và YouTube để quảng bá ứng dụng AI.",
+      isMobileOnly: true, // This job is only shown on mobile
     },
   ];
+  const isMobile = useIsMobile();
+  const visibleJobs = isMobile ? jobs : jobs.slice(0, 2);
 
   return (
-    <section id="hire-section" className="py-20 bg-gradient-to-br from-gray-50 to-purple-50 relative overflow-hidden">
+    <section
+      id="hire-section"
+      className="py-10 sm:py-20 bg-gradient-to-br from-gray-50 to-purple-50 relative overflow-hidden"
+    >
       {/* Airplane icon - flush left, vertically centered, responsive */}
       <div className="hidden md:flex absolute left-0 top-36 -translate-y-1/2 w-[300px] lg:w-[420px] xl:w-[570px] h-auto z-10">
         <img
@@ -55,22 +75,22 @@ export default function Career() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12 space-y-6">
-          <h2 className="text-[56px] font-bold bg-gradient-secondary bg-clip-text text-transparent">
+          <h2 className="text-[42px] sm:text-[56px] font-bold bg-gradient-secondary bg-clip-text text-transparent">
             Cơ hội nghề nghiệp
           </h2>
-          <p className="text-[24px] text-creatix-gray-900 opacity-80 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-[20px] text-creatix-gray-900 opacity-80 max-w-4xl mx-auto leading-relaxed">
             " Chúng tôi kiến tạo tương lai với các giải pháp Trí tuệ Nhân tạo
             tiên tiến, mang lại giá trị bền vững cho doanh nghiệp và cộng đồng.
             "
           </p>
-          <Button className="bg-creatix-primary hover:bg-creatix-primary/90 text-white font-bold px-6 py-3 h-12 rounded-xl">
+          <Button className="bg-creatix-primary hover:bg-creatix-primary/90 text-white text-base font-bold px-6 py-3 h-12 rounded-xl">
             Xem tất cả vị trí tuyển dụng
           </Button>
         </div>
 
         {/* Job Listings */}
         <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          {jobs.slice(0, 2).map((job, index) => (
+          {visibleJobs.map((job, index) => (
             <div
               key={index}
               className="bg-white rounded-3xl border border-creatix-primary p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 space-y-8"
@@ -92,7 +112,7 @@ export default function Career() {
           ))}
 
           {/* Single card for the third job to center it */}
-          <div className="lg:col-span-2 flex justify-center">
+          <div className="hidden sm:flex lg:col-span-2 justify-center">
             <div
               className="bg-white rounded-3xl border border-creatix-primary shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col -ml-px w-1/2"
               style={{ padding: "32px 32px 32px 23px" }}

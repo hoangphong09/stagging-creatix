@@ -35,22 +35,6 @@ const phoneSlides = [
       </>
     ),
   },
-  {
-    id: 3,
-    img: "home_hero_slider_1.svg",
-    badgeTop: (
-      <>
-        Biến khoảnh khắc thành <br />
-        nghệ thuật
-      </>
-    ),
-    badgeBottom: (
-      <>
-        Khám phá sức mạnh chỉnh ảnh <br />
-        bằng AI.
-      </>
-    ),
-  },
 ];
 
 export default function Hero() {
@@ -76,7 +60,7 @@ export default function Hero() {
   return (
     <section
       id="intro-section"
-      className="relative bg-gradient-to-br from-gray-50 to-purple-50 overflow-hidden"
+      className="relative bg-gradient-to-br from-gray-50 to-white overflow-hidden"
       style={{ minHeight: "837px" }}
     >
       {/* Decorative Left Cover */}
@@ -98,8 +82,8 @@ export default function Hero() {
       />
 
       {/* Main Content */}
-      <div className="relative z-30 max-w-7xl mx-auto pt-32 px-4">
-        <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[600px]">
+      <div className="relative z-30 max-w-7xl mx-auto pt-2 px-4 sm:px-6 sm:pt-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center min-h-[600px]">
           {/* Left */}
           <div className="space-y-8">
             <div className="space-y-6">
@@ -108,12 +92,12 @@ export default function Hero() {
                   Creatix Technology
                 </span>
                 <br />
-                <span className="text-creatix-gray-900 font-inter text-3xl lg:text-4xl">
+                <span className="text-creatix-gray-900 font-inter text-2xl lg:text-4xl">
                   "Tiên phong trong lĩnh vực"
                 </span>
               </h1>
 
-              <p className="text-lg text-creatix-gray-900 leading-relaxed max-w-lg">
+              <p className="text-base sm:text-lg text-creatix-gray-900 leading-relaxed max-w-lg">
                 <span className="font-bold">Creatix Technology</span> chuyên
                 cung cấp dịch vụ và giải pháp công nghệ hiện đại, giúp đơn giản
                 hóa quy trình và nâng cao hiệu quả kinh doanh.
@@ -122,10 +106,10 @@ export default function Hero() {
 
             {/* Download Buttons */}
             <div className="space-y-6">
-              <p className="text-sm font-bold text-creatix-gray-900 uppercase tracking-wide">
+              <p className="text-xs sm:text-sm font-bold text-creatix-gray-900 uppercase tracking-wide">
                 Tải ngay để trải nghiệm thử dịch vụ của chúng tôi
               </p>
-              <div className="flex flex-col sm:flex-row gap-6">
+              <div className="flex flex-row gap-6">
                 {/* Google Play */}
                 <div className="flex items-center gap-3 bg-creatix-primary px-4 py-3 rounded-xl hover:opacity-90 cursor-pointer">
                   <img
@@ -141,11 +125,7 @@ export default function Hero() {
 
                 {/* App Store */}
                 <div className="flex items-center gap-3 bg-creatix-gray-900 px-4 py-3 rounded-xl hover:opacity-90 cursor-pointer">
-                  <img
-                    src="appstore.png"
-                    alt="App Store"
-                    className="w-8 h-8"
-                  />
+                  <img src="appstore.png" alt="App Store" className="w-8 h-8" />
                   <div className="text-white">
                     <div className="text-sm font-semibold">Download on the</div>
                     <div className="text-lg font-bold">App Store</div>
@@ -161,8 +141,8 @@ export default function Hero() {
       <div
         className={
           phoneSlides[activeStep].id === 2
-            ? "absolute right-28 bottom-[15.85rem] flex items-end pointer-events-none z-20"
-            : "absolute right-0 bottom-[14.85rem] flex items-end pointer-events-none z-20"
+            ? "absolute right-28 bottom-[15.85rem] items-end pointer-events-none z-20 hidden sm:flex"
+            : "absolute right-0 bottom-[14.85rem] items-end pointer-events-none z-20 hidden sm:flex"
         }
       >
         <div className="relative w-[320px] sm:w-[420px] md:w-[520px] lg:w-[600px] xl:w-[700px]">
@@ -183,7 +163,7 @@ export default function Hero() {
             <div
               className={
                 phoneSlides[activeStep].id === 2
-                  ? "absolute -top-12 right-2 bg-gradient-to-b from-purple-100 to-blue-100 border border-purple-300 rounded-xl p-4 shadow-lg pointer-events-auto"
+                  ? "absolute -top-12 right-2 bg-gradient-to-b from-[#f3f3ff] to-[#f0f6ff] border border-purple-300 rounded-xl p-4 shadow-lg pointer-events-auto"
                   : "absolute -top-3 right-28 bg-gradient-red-light border border-red-200 rounded-xl p-4 shadow-lg pointer-events-auto"
               }
             >
@@ -201,7 +181,7 @@ export default function Hero() {
             <div
               className={
                 phoneSlides[activeStep].id === 2
-                  ? "absolute bottom-40 left-20 bg-gradient-to-b from-purple-100 to-blue-100 border border-purple-300 rounded-xl p-4 shadow-lg pointer-events-auto"
+                  ? "absolute bottom-40 left-20 bg-gradient-to-b from-[#f3f3ff] to-[#f0f6ff] border border-purple-300 rounded-xl p-4 shadow-lg pointer-events-auto"
                   : "absolute bottom-40 -left-1 bg-gradient-red-light border border-red-200 rounded-xl p-4 shadow-lg pointer-events-auto"
               }
             >
@@ -218,7 +198,7 @@ export default function Hero() {
           </div>
         </div>
       </div>
-      <div className="step-group absolute top-[20rem] right-[2rem] transform -translate-y-1/2 z-30 flex flex-col gap-4">
+      <div className="step-group absolute top-[20rem] right-[2rem] transform -translate-y-1/2 z-30 flex-col gap-4 hidden sm:flex">
         {phoneSlides.map((slide, index) => (
           <StepIcon
             key={slide.id}
@@ -229,7 +209,7 @@ export default function Hero() {
         ))}
       </div>
       {/* Partner Logos Section */}
-      <section className="w-screen relative z-10 left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] bg-gradient-primary py-12 mt-[-9px]">
+      <section className="w-screen relative z-10 left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] bg-gradient-primary py-12 -mt-[1rem]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10">
             <h2 className="text-2xl font-bold text-white tracking-wide">
@@ -293,13 +273,13 @@ function StepIcon({
         className={`transition-all duration-300 flex items-center justify-center rounded-2xl w-16 h-16 mb-0
         ${
           active
-            ? "border-2 border-[#635BFF] shadow-[0_0_0_6px_rgba(99,91,255,0.15)] bg-[rgba(99,91,255,0.2)]"
+            ? "border-2 border-[#635BFF] bg-[rgba(109,100,251,0.15)]"
             : "border-2 border-gray-200 bg-gray-100 opacity-60"
         }
         ${clickable ? "cursor-pointer pointer-events-auto" : ""}
       `}
         style={{
-          boxShadow: active ? "0 0 16px 4px rgba(99,91,255,0.25)" : undefined,
+          boxShadow: active ? "0px 0px 10px rgba(109,100,251,0.15)" : undefined,
         }}
         onClick={clickable && onClick ? onClick : undefined}
       >
