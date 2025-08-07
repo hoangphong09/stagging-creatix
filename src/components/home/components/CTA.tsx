@@ -26,7 +26,12 @@ export default function CTA() {
             </p>
           </div>
 
-          <Button className="bg-gradient-purple hover:opacity-90 text-white font-bold px-8 py-3 h-12 w-auto rounded-xl">
+          <Button
+            className="bg-gradient-purple hover:opacity-90 text-white font-bold px-8 py-3 h-12 w-auto rounded-xl"
+            onClick={() =>
+              (window.location.href = "mailto:admin@creatixtechnology.com")
+            }
+          >
             Liên hệ ngay
           </Button>
         </div>

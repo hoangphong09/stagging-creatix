@@ -12,6 +12,7 @@ export default function FeaturedProducts() {
       logo: "/app_logo.png",
       badgeColor: "bg-red-50",
       titleColor: "bg-gradient-red bg-clip-text text-transparent",
+      link: "https://stagging-magic-eraser.vercel.app/",
     },
     {
       title: "AI Video Editor",
@@ -21,6 +22,7 @@ export default function FeaturedProducts() {
 
       badgeColor: "bg-gray-200",
       titleColor: "text-creatix-gray-900",
+      link: "https://stagging-video-eraser.vercel.app/",
     },
     {
       title: "Figma Translate Plugin",
@@ -30,6 +32,7 @@ export default function FeaturedProducts() {
 
       badgeColor: "bg-gray-200",
       titleColor: "text-creatix-gray-900",
+      link: "https://www.figma.com/community/plugin/1493925748627016409/translate-text-with-gemini",
     },
   ];
 
@@ -100,7 +103,13 @@ export default function FeaturedProducts() {
                 </div>
 
                 {/* Learn More Link */}
-                <div className="flex items-center gap-2 text-creatix-primary font-semibold text-sm cursor-pointer hover:gap-3 transition-all mt-6">
+                <div
+                  className="flex items-center gap-2 text-creatix-primary font-semibold text-sm cursor-pointer hover:gap-3 transition-all mt-6"
+                  onClick={() => {
+                    // Android → Google Play
+                    window.open(product.link, "_blank");
+                  }}
+                >
                   <span>Tìm hiểu thêm</span>
                   <ArrowRight className="w-4 h-4" />
                 </div>

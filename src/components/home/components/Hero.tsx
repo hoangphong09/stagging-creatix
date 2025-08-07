@@ -111,7 +111,16 @@ export default function Hero() {
               </p>
               <div className="flex flex-row gap-6">
                 {/* Google Play */}
-                <div className="flex items-center gap-3 bg-creatix-primary px-4 py-3 rounded-xl hover:opacity-90 cursor-pointer">
+                <div
+                  className="flex items-center gap-3 bg-creatix-primary px-4 py-3 rounded-xl hover:opacity-90 cursor-pointer"
+                  onClick={() => {
+                    // Android → Google Play
+                    window.open(
+                      "https://play.google.com/store/apps/details?id=com.duygiangdg.magiceraser",
+                      "_blank"
+                    );
+                  }}
+                >
                   <img
                     src="/chplay.png"
                     alt="Google Play"
@@ -124,7 +133,16 @@ export default function Hero() {
                 </div>
 
                 {/* App Store */}
-                <div className="flex items-center gap-3 bg-creatix-gray-900 px-4 py-3 rounded-xl hover:opacity-90 cursor-pointer">
+                <div
+                  className="flex items-center gap-3 bg-creatix-gray-900 px-4 py-3 rounded-xl hover:opacity-90 cursor-pointer"
+                  onClick={() => {
+                    // IOS → App Store
+                    window.open(
+                      "https://apps.apple.com/us/app/magic-eraser-remove-object/id1619950778",
+                      "_blank"
+                    );
+                  }}
+                >
                   <img src="appstore.png" alt="App Store" className="w-8 h-8" />
                   <div className="text-white">
                     <div className="text-sm font-semibold">Download on the</div>

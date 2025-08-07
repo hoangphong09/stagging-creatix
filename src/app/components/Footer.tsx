@@ -26,13 +26,13 @@ const Footer: React.FC = () => {
             </h3>
             <div className="space-y-4">
               <Link
-                href="/"
+                href="#intro-section"
                 className="block text-base hover:text-purple-200 transition-colors"
               >
                 Giới thiệu
               </Link>
               <Link
-                href="/products"
+                href="#product-section"
                 className="block text-base hover:text-purple-200 transition-colors"
               >
                 Sản phẩm
@@ -43,12 +43,12 @@ const Footer: React.FC = () => {
               >
                 Tuyển dụng
               </Link>
-              <Link
-                href="/contact"
+              <a
+                href="mailto:admin@creatixtechnology.com"
                 className="block text-base hover:text-purple-200 transition-colors"
               >
                 Liên hệ
-              </Link>
+              </a>
             </div>
           </div>
 

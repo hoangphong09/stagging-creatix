@@ -123,9 +123,11 @@ const Header: React.FC = () => {
 
           {/* Desktop Menu */}
           <nav className="hidden lg:flex items-center gap-8">
-            {[{ name: "Giới thiệu", id: "intro-section", key: "home" },
+            {[
+              { name: "Giới thiệu", id: "intro-section", key: "home" },
               { name: "Sản phẩm", id: "product-section", key: "products" },
-              { name: "Dịch vụ", id: "service-section", key: "services" }].map((item) => (
+              { name: "Dịch vụ", id: "service-section", key: "services" },
+            ].map((item) => (
               <a
                 key={item.key}
                 href={`#${item.id}`}
@@ -140,9 +142,11 @@ const Header: React.FC = () => {
               </a>
             ))}
 
-            {[{ href: "/careers", label: "Tuyển dụng", key: "careers" },
+            {[
+              { href: "/careers", label: "Tuyển dụng", key: "careers" },
               { href: "/blog", label: "Blog", key: "blog" },
-              { href: "/our-story", label: "Câu chuyện", key: "story" }].map((link) => (
+              { href: "/our-story", label: "Câu chuyện", key: "story" },
+            ].map((link) => (
               <Link
                 key={link.key}
                 href={link.href}
@@ -159,7 +163,12 @@ const Header: React.FC = () => {
           </nav>
 
           {/* CTA Button */}
-          <Button className="bg-transparent border border-purple-500 font-bold rounded-xl px-8 py-2 h-11 hover:bg-gradient-primary/10 transition-all duration-200 shadow-none text-[16px]">
+          <Button
+            className="bg-transparent border border-purple-500 font-bold rounded-xl px-8 py-2 h-11 hover:bg-gradient-primary/10 transition-all duration-200 shadow-none text-[16px]"
+            onClick={() =>
+              (window.location.href = "mailto:admin@creatixtechnology.com")
+            }
+          >
             <p className="text-gradient-primary">Yêu cầu Demo</p>
           </Button>
 
@@ -198,9 +207,11 @@ const Header: React.FC = () => {
           </div>
 
           <nav className="flex flex-col gap-4 mt-4">
-            {[{ name: "Giới thiệu", id: "intro-section", key: "home" },
+            {[
+              { name: "Giới thiệu", id: "intro-section", key: "home" },
               { name: "Sản phẩm", id: "product-section", key: "products" },
-              { name: "Dịch vụ", id: "service-section", key: "services" }].map((item) => (
+              { name: "Dịch vụ", id: "service-section", key: "services" },
+            ].map((item) => (
               <a
                 key={item.key}
                 href={`#${item.id}`}
@@ -211,9 +222,11 @@ const Header: React.FC = () => {
               </a>
             ))}
 
-            {[{ href: "/careers", label: "Tuyển dụng", key: "careers" },
+            {[
+              { href: "/careers", label: "Tuyển dụng", key: "careers" },
               { href: "/blog", label: "Blog", key: "blog" },
-              { href: "/our-story", label: "Câu chuyện", key: "story" }].map((link) => (
+              { href: "/our-story", label: "Câu chuyện", key: "story" },
+            ].map((link) => (
               <Link
                 key={link.key}
                 href={link.href}

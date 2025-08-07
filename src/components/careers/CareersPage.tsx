@@ -57,7 +57,7 @@ export default function CareersPage() {
           </h2>
           <div className="w-full flex justify-center mb-10">
             <img
-              src="/hire_main_image.svg"
+              src="/hire_main_image.png"
               alt="Creatix Hiring"
               loading="lazy"
               style={{

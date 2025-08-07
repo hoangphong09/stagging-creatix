@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { link } from "fs";
 import { ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
 
@@ -23,17 +24,20 @@ export default function Career() {
       title: "AI Researcher – Applied Computer Vision",
       description:
         "Phát triển và tối ưu các mô hình AI trong lĩnh vực xử lý ảnh và thị giác máy tính.",
+      link: "/careers/ai-researcher-applied-computer-vision",
     },
     {
       title: "iOS Developer (Mid/Senior)",
       description:
         "Phát triển ứng dụng iOS hiện đại sử dụng SwiftUI, tối ưu trải nghiệm người dùng với công nghệ mới nhất.",
+      link: "/careers/ios-developer-mid-senior",
     },
     {
       title: "Cộng Tác Viên Mạng Xã Hội",
       description:
         "Sáng tạo nội dung video ngắn cho TikTok, Instagram,Facebook và YouTube để quảng bá ứng dụng AI.",
       isMobileOnly: true, // This job is only shown on mobile
+      link: "/careers/cong-tac-vien-mang-xa-hoi",
     },
   ];
   const isMobile = useIsMobile();
@@ -83,7 +87,12 @@ export default function Career() {
             tiên tiến, mang lại giá trị bền vững cho doanh nghiệp và cộng đồng.
             "
           </p>
-          <Button className="bg-creatix-primary hover:bg-creatix-primary/90 text-white text-base font-bold px-6 py-3 h-12 rounded-xl">
+          <Button
+            className="bg-creatix-primary hover:bg-creatix-primary/90 text-white text-base font-bold px-6 py-3 h-12 rounded-xl"
+            onClick={() => {
+              window.location.href = "/careers";
+            }}
+          >
             Xem tất cả vị trí tuyển dụng
           </Button>
         </div>
@@ -104,7 +113,12 @@ export default function Career() {
                 </p>
               </div>
 
-              <div className="flex items-center gap-2 text-creatix-primary font-semibold text-sm cursor-pointer hover:gap-3 transition-all">
+              <div
+                className="flex items-center gap-2 text-creatix-primary font-semibold text-sm cursor-pointer hover:gap-3 transition-all"
+                onClick={() => {
+                  window.open(job.link);
+                }}
+              >
                 <span>Tìm hiểu thêm</span>
                 <ArrowRight className="w-4 h-4" />
               </div>
@@ -127,7 +141,12 @@ export default function Career() {
                 </p>
               </div>
 
-              <div className="flex items-center gap-2 text-creatix-primary font-semibold text-sm cursor-pointer hover:gap-3 transition-all mt-8">
+              <div
+                className="flex items-center gap-2 text-creatix-primary font-semibold text-sm cursor-pointer hover:gap-3 transition-all mt-8"
+                onClick={() => {
+                  window.open("/careers/cong-tac-vien-mang-xa-hoi");
+                }}
+              >
                 <span>Tìm hiểu thêm</span>
                 <ArrowRight className="w-4 h-4" />
               </div>
