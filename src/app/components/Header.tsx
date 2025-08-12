@@ -21,7 +21,6 @@ const Header: React.FC = () => {
   const [hasShadow, setHasShadow] = useState(false);
   const [isLoadingLanguage, setIsLoadingLanguage] = useState(false);
 
-  // --- Google Translate init ---
   useEffect(() => {
     const addGoogleTranslateScript = () => {
       if (document.getElementById("google-translate-script")) return;
@@ -43,7 +42,6 @@ const Header: React.FC = () => {
     addGoogleTranslateScript();
   }, []);
 
-  // --- Hàm đổi ngôn ngữ ---
   const changeLanguage = (lang: string) => {
     const googleTranslateCookieName = "googtrans";
     setIsLoadingLanguage(true);
@@ -55,19 +53,17 @@ const Header: React.FC = () => {
       return;
     }
 
-    // Set cookie đúng format
     document.cookie = `${googleTranslateCookieName}=/vi/${lang};path=/;domain=${window.location.hostname}`;
     document.cookie = `${googleTranslateCookieName}=/vi/${lang};path=/;`;
 
-    // Reload để Google Translate áp dụng
     location.reload();
   };
 
-  // --- Tự động detect IP và dịch ---
   useEffect(() => {
     const detectLangAndTranslate = async () => {
       try {
         const res = await fetch("https://ipwho.is/");
+        setIsLoadingLanguage(true);
         const data = await res.json();
         const country = data.country_code || "VN";
         console.log("Detected country code:", country);
@@ -79,19 +75,27 @@ const Header: React.FC = () => {
           VN: "vi",
           DE: "de",
           CN: "zh",
+          IN: "hi",
+          CA: "en",
+          AU: "en",
+          BR: "pt",
+          IT: "it",
+          ES: "es",
+          RU: "ru",
+          KR: "ko",
         };
 
         const lang = countryToLang[country] || "vi";
 
-        // Nếu ngôn ngữ khác tiếng Việt mới dịch
         if (lang !== "vi") {
-          // Chỉ dịch nếu chưa set cookie
           if (!document.cookie.includes(`/vi/${lang}`)) {
             changeLanguage(lang);
           }
         }
       } catch (error) {
         console.error("Detect language error:", error);
+      } finally {
+        setIsLoadingLanguage(false);
       }
     };
 
@@ -206,7 +210,7 @@ const Header: React.FC = () => {
               src="/logo.jpg"
               alt="Creatix Logo"
             />
-            <span className="text-xl font-bold text-creatix-gray-900 font-inter">
+            <span className="text-base sm:text-xl font-bold text-creatix-gray-900 font-inter">
               Creatix Technology
             </span>
           </Link>

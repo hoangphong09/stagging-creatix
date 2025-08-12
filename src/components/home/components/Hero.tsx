@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 const phoneSlides = [
   {
     id: 1,
-    img: "/hero_slider_1.png",
+    img: "/home_hero_slider_1.png",
     badgeTop: (
       <>
         Biến khoảnh khắc thành <br />
@@ -21,17 +21,19 @@ const phoneSlides = [
   },
   {
     id: 2,
-    img: "/home_hero_slider_2.svg",
+    img: "/home_hero_slider_2.png",
     badgeTop: (
       <>
-        Erase distractions. Transform your <br />
-        video into stunning visuals.
+        Xóa bỏ mọi phiền nhiễu. Biến <br />
+        video của bạn thành hình ảnh <br />
+        ấn tượng
       </>
     ),
     badgeBottom: (
       <>
-        Turn real footage into <br />
-        animated stories.
+        Biến cảnh quay thực tế thành
+        <br />
+        câu chuyện hoạt hình.
       </>
     ),
   },
@@ -53,14 +55,14 @@ export default function Hero() {
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveStep((prev) => (prev + 1) % phoneSlides.length);
-    }, 500000000);
+    }, 5000);
     return () => clearInterval(interval);
   }, []);
 
   return (
     <section
       id="intro-section"
-      className="relative bg-gradient-to-br from-gray-50 to-white overflow-hidden"
+      className="relative bg-white overflow-hidden"
       style={{ minHeight: "837px" }}
     >
       {/* Decorative Left Cover */}
@@ -73,13 +75,13 @@ export default function Hero() {
       />
 
       {/* Decorative Wavy Background */}
-      <img
+      {/* <img
         src="/home_hero_wavy_bg.svg"
         alt=""
         aria-hidden="true"
         className="absolute inset-0 w-full h-full object-cover z-10 pointer-events-none select-none"
         style={{ objectFit: "cover" }}
-      />
+      /> */}
 
       {/* Main Content */}
       <div className="relative z-30 max-w-7xl mx-auto pt-2 px-4 sm:px-6 sm:pt-24">
@@ -143,7 +145,11 @@ export default function Hero() {
                     );
                   }}
                 >
-                  <img src="appstore.png" alt="App Store" className="w-8 h-8" />
+                  <img
+                    src="/app_store.png"
+                    alt="App Store"
+                    className="w-8 h-8"
+                  />
                   <div className="text-white">
                     <div className="text-sm font-semibold">Download on the</div>
                     <div className="text-lg font-bold">App Store</div>
@@ -159,7 +165,7 @@ export default function Hero() {
       <div
         className={
           phoneSlides[activeStep].id === 2
-            ? "absolute right-28 bottom-[15.85rem] items-end pointer-events-none z-20 hidden sm:flex"
+            ? "absolute right-14 bottom-[15.85rem] items-end pointer-events-none z-20 hidden sm:flex"
             : "absolute right-0 bottom-[14.85rem] items-end pointer-events-none z-20 hidden sm:flex"
         }
       >
@@ -181,8 +187,8 @@ export default function Hero() {
             <div
               className={
                 phoneSlides[activeStep].id === 2
-                  ? "absolute -top-12 right-2 bg-gradient-to-b from-[#f3f3ff] to-[#f0f6ff] border border-purple-300 rounded-xl p-4 shadow-lg pointer-events-auto"
-                  : "absolute -top-3 right-28 bg-gradient-red-light border border-red-200 rounded-xl p-4 shadow-lg pointer-events-auto"
+                  ? "absolute -top-1 right-28 bg-gradient-to-b from-[#f3f3ff] to-[#f0f6ff] border border-purple-300 rounded-xl p-4 shadow-lg pointer-events-auto"
+                  : "absolute top-3 right-28 bg-gradient-red-light border border-red-200 rounded-xl p-4 shadow-lg pointer-events-auto"
               }
             >
               <p
@@ -199,7 +205,7 @@ export default function Hero() {
             <div
               className={
                 phoneSlides[activeStep].id === 2
-                  ? "absolute bottom-40 left-20 bg-gradient-to-b from-[#f3f3ff] to-[#f0f6ff] border border-purple-300 rounded-xl p-4 shadow-lg pointer-events-auto"
+                  ? "absolute bottom-24 left-1 bg-gradient-to-b from-[#f3f3ff] to-[#f0f6ff] border border-purple-300 rounded-xl p-4 shadow-lg pointer-events-auto"
                   : "absolute bottom-40 -left-1 bg-gradient-red-light border border-red-200 rounded-xl p-4 shadow-lg pointer-events-auto"
               }
             >
@@ -227,7 +233,7 @@ export default function Hero() {
         ))}
       </div>
       {/* Partner Logos Section */}
-      <section className="w-screen relative z-10 left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] bg-gradient-primary py-12 -mt-[1rem]">
+      <section className="w-screen relative z-10 left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] bg-gradient-primary py-6 sm:h-52">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10">
             <h2 className="text-2xl font-bold text-white tracking-wide">
@@ -302,7 +308,7 @@ function StepIcon({
         onClick={clickable && onClick ? onClick : undefined}
       >
         <img
-          src="/home_slider_logo.png"
+          src="/app_logo.png"
           alt="Eraser Icon"
           className={`w-8 h-8 object-contain ${active ? "" : "opacity-60"}`}
           draggable={false}

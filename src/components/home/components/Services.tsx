@@ -107,11 +107,11 @@ export default function Services() {
                 </div>
 
                 {/* Details Link (hover to show) */}
-                <div className="hidden group-hover:flex items-center gap-2 text-sm font-semibold cursor-pointer transition-opacity duration-300">
-                  <span className="bg-gradient-primary bg-clip-text text-transparent">
+                <div className="max-h-0 overflow-hidden opacity-0 transform translate-y-2 group-hover:max-h-10 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-in-out flex items-center gap-2 text-sm font-semibold cursor-pointer">
+                  <span className="bg-gradient-to-r from-[#571CEC] to-[#A96CF9] bg-clip-text text-transparent leading-tight">
                     Chi tiết
                   </span>
-                  <ArrowRight className="w-4 h-4 text-purple-600 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-4 h-4 text-purple-600 transition-transform duration-300 group-hover:translate-x-1" />
                 </div>
               </div>
             );

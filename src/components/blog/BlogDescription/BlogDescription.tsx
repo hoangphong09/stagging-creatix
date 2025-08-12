@@ -9,25 +9,25 @@ const BLOGS = [
     slug: "tuong-lai-ai-trong-doanh-nghiep",
     title: "Tương Lai của AI trong Doanh Nghiệp",
     tag: "#1 BÀI VIẾT NỔI BẬT TRONG THÁNG",
-    image: "/blog_post_1.svg",
+    image: "/blog_post_1.jpg",
   },
   {
     slug: "huong-dan-su-dung-magic-eraser",
     title: "Hướng Dẫn Sử Dụng Magic Eraser",
     tag: "#1 BÀI VIẾT NỔI BẬT TRONG THÁNG",
-    image: "/blog_post_2.svg",
+    image: "/blog_post_2.jpg",
   },
   {
     slug: "figma-translate-plugin-bi-quyet-dich-nhanh",
     title: "Figma Translate Plugin: Bí Quyết Dịch Nhanh",
     tag: "#1 BÀI VIẾT NỔI BẬT TRONG THÁNG",
-    image: "/blog_post_3.svg",
+    image: "/blog_post_3.jpg",
   },
   {
     slug: "5-cong-cu-ai-cho-nha-thiet-ke",
     title: "5 Công Cụ AI Hàng Đầu Cho Nhà Thiết Kế",
     tag: "#1 BÀI VIẾT NỔI BẬT TRONG THÁNG",
-    image: "/blog_post_4.svg",
+    image: "/blog_post_4.jpg",
   },
 ];
 

@@ -1,14 +1,14 @@
 "use client";
 
 import { ArrowRight } from "lucide-react";
-
+ 
 export default function FeaturedProducts() {
   const products = [
     {
       title: "Magic Eraser",
       description:
         "Xóa bỏ các đối tượng không mong muốn khỏi ảnh một cách nhanh chóng và chính xác.",
-      image: "/home_product_1.png",
+      image: "/home_product_1.jpg",
       logo: "/app_logo.png",
       badgeColor: "bg-red-50",
       titleColor: "bg-gradient-red bg-clip-text text-transparent",
@@ -18,7 +18,7 @@ export default function FeaturedProducts() {
       title: "AI Video Editor",
       description:
         "Tự động chỉnh sửa, thêm hiệu ứng và tối ưu hóa video của bạn bằng AI.",
-      image: "/home_product_2.png",
+      image: "/home_product_2.jpg",
 
       badgeColor: "bg-gray-200",
       titleColor: "text-creatix-gray-900",
@@ -28,7 +28,7 @@ export default function FeaturedProducts() {
       title: "Figma Translate Plugin",
       description:
         "Dịch văn bản trong thiết kế Figma sang bất kỳ ngôn ngữ nào với Google Gemini AI. Hỗ trợ tự động nhận dạng, dịch hàng loạt và giữ nguyên layout.",
-      image: "/top_product_3.svg",
+      image: "/home_product_3.jpg",
 
       badgeColor: "bg-gray-200",
       titleColor: "text-creatix-gray-900",

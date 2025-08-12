@@ -8,7 +8,7 @@ const SLIDER_POSTS = [
     title: "Tương Lai của AI trong Doanh Nghiệp",
     summary:
       "Khám phá cách AI đang thay đổi cách doanh nghiệp vận hành và tạo ra giá trị.",
-    image: "/blog_post_1.svg",
+    image: "/blog_post_1.jpg",
     tag: "#1 BÀI VIẾT NỔI BẬT TRONG THÁNG",
     link: "#",
     slug: "tuong-lai-ai-trong-doanh-nghiep",
@@ -16,7 +16,7 @@ const SLIDER_POSTS = [
   {
     title: "Hướng Dẫn Sử Dụng Magic Eraser",
     summary: "Cách sử dụng Magic Eraser để chỉnh sửa ảnh siêu nhanh.",
-    image: "/blog_post_2.svg",
+    image: "/blog_post_2.jpg",
     tag: "#1 BÀI VIẾT NỔI BẬT",
     link: "#",
     slug: "huong-dan-su-dung-magic-eraser",
@@ -25,7 +25,7 @@ const SLIDER_POSTS = [
     title: "Figma Translate Plugin: Bí Quyết Dịch Nhanh",
     summary:
       "Hướng dẫn sử dụng Figma Translate Plugin để dịch nhanh giao diện thiết kế.",
-    image: "/blog_post_3.svg",
+    image: "/blog_post_3.jpg",
     tag: "#1 BÀI VIẾT NỔI BẬT",
     link: "#",
     slug: "figma-translate-plugin-bi-quyet-dich-nhanh",
@@ -36,7 +36,7 @@ const OTHER_POSTS = [
   {
     title: "Tương lai của AI trong doanh nghiệp",
     summary: "Khám phá AI và sự đổi mới sáng tạo cho doanh nghiệp và tổ chức.",
-    image: "/blog_post_1.svg",
+    image: "/blog_post_1.jpg",
     tag: "",
     slug: "tuong-lai-ai-trong-doanh-nghiep",
   },
@@ -44,14 +44,14 @@ const OTHER_POSTS = [
     title: "5 Công Cụ AI Hàng Đầu Cho Nhà Thiết Kế",
     summary:
       "Tối ưu hóa công việc, sáng tạo và đổi mới với các công cụ AI hiện đại.",
-    image: "/blog_post_4.svg",
+    image: "/blog_post_4.jpg",
     tag: "",
     slug: "5-cong-cu-ai-cho-nha-thiet-ke",
   },
   {
     title: "Hướng Dẫn Sử Dụng ",
     summary: "Cách sử dụng Magic Eraser để chỉnh sửa ảnh siêu nhanh.",
-    image: "/blog_post_2.svg",
+    image: "/blog_post_2.jpg",
     tag: "Magic Eraser",
     slug: "huong-dan-su-dung-magic-eraser",
   },
@@ -59,7 +59,7 @@ const OTHER_POSTS = [
     title: "Figma Translate Plugin: Bí Quyết Dịch Nhanh",
     summary:
       "Hướng dẫn sử dụng Figma Translate Plugin để dịch nhanh giao diện thiết kế.",
-    image: "/blog_post_3.svg",
+    image: "/blog_post_3.jpg",
     tag: "",
     slug: "figma-translate-plugin-bi-quyet-dich-nhanh",
   },
@@ -97,7 +97,7 @@ export default function BlogPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#F8FAFC] overflow-x-hidden">
+    <div className="min-h-screen flex flex-col bg-white overflow-x-hidden">
       <img
         src="/blog_right_obj.svg"
         alt=""

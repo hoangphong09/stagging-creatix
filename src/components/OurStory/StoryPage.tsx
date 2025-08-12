@@ -42,10 +42,10 @@ export default function StoryPage() {
 
       {/* Main Title */}
       <div className="w-full max-w-5xl mx-auto text-center mt-32 mb-8 z-10 flex flex-col items-center justify-center gap-4">
-        <h1 className="text-[62px] sm:text-[70px] font-extrabold text-creatix-gray-900 mb-2">
+        <h1 className="text-[62px] sm:text-[70px] font-extrabold text-creatix-gray-900 mb-2 font-vietnam-pro">
           “ Chúng tôi là Creatix ”
         </h1>
-        <h2 className="text-[62px] sm:text-[64px] font-extrabold bg-gradient-primary bg-clip-text text-transparent mb-4">
+        <h2 className="text-[62px] sm:text-[64px] font-extrabold bg-gradient-primary bg-clip-text text-transparent mb-4 font-vietnam-pro">
           Nơi công nghệ gặp sáng tạo.
         </h2>
         <p className="text-[20px] text-gray-600 font-normal mb-6">
@@ -61,25 +61,27 @@ export default function StoryPage() {
       {/* About Us Section */}
       <div className="w-full max-w-7xl mx-auto grid md:grid-cols-2 gap-12 mt-20 items-center z-10">
         <div>
-          <div className="text-[16px] text-[#635BFF] font-semibold mb-2 bg-[#635BFF0D] px-2 py-3 flex justify-center w-36 rounded-full">
+          <div className="text-[14px] font-inter text-[#635BFF] font-semibold mb-2 bg-[#635BFF0D] px-2 py-3 flex justify-center w-36 rounded-full">
             Chúng tôi là ai?
           </div>
-          <h3 className="text-[48px] font-bold bg-gradient-to-r from-[#392F50] to-[#7344C8] bg-clip-text text-transparent mb-4">
+          <h3 className="text-[48px] font-extrabold bg-gradient-to-r from-[#392F50] to-[#7344C8] bg-clip-text text-transparent mb-4">
             Về Chúng Tôi
           </h3>
-          <p className="text-[22px] text-creatix-gray-900 mb-2">
-            <b>"Creatix Technology</b> là công ty công nghệ tiên phong trong
-            lĩnh vực Trí tuệ Nhân tạo (AI), chuyên cung cấp các sản phẩm và dịch
-            vụ AI sáng tạo, giúp doanh nghiệp và cá nhân tối ưu hoá quy trình,
-            nâng cao hiệu suất và mở ra những tiềm năng mới. Sứ mệnh của chúng
-            tôi là đưa các giải pháp AI, mang công nghệ tiên tiến gần hơn với
-            mọi người.
+          <p className="text-[18px] text-[#0C0C0C] mb-2 font-inter">
+            <b>
+              <i>" </i>Creatix Technology
+            </b>{" "}
+            là công ty công nghệ tiên phong trong lĩnh vực Trí tuệ Nhân tạo
+            (AI), chuyên cung cấp các sản phẩm và dịch vụ AI sáng tạo, giúp
+            doanh nghiệp và cá nhân tối ưu hoá quy trình, nâng cao hiệu suất và
+            mở ra những tiềm năng mới. Sứ mệnh của chúng tôi là đưa các giải
+            pháp AI, mang công nghệ tiên tiến gần hơn với mọi người.
           </p>
         </div>
         <div className="flex justify-center">
           <div className="relative">
             <img
-              src="/story_left_img.png"
+              src="/story_left_img.jpg"
               alt="Về Chúng Tôi"
               className="rounded-2xl w-full max-w-[540px] object-cover"
             />
@@ -92,7 +94,7 @@ export default function StoryPage() {
         <div className="flex justify-center order-2 md:order-1">
           <div className="relative">
             <img
-              src="/story_right_img.png"
+              src="/story_right_img.jpg"
               alt="Văn hoá Creatix"
               className="rounded-2xl w-full max-w-[540px] object-cover"
             />
@@ -105,17 +107,17 @@ export default function StoryPage() {
           </div>
         </div>
         <div className="order-1 md:order-2">
-          <div className="text-[16px] text-[#635BFF] font-semibold mb-2 bg-[#635BFF0D] px-2 py-3 flex justify-center w-52 rounded-full">
+          <div className="text-[14px] text-[#635BFF] font-semibold mb-2 bg-[#635BFF0D] px-2 py-3 flex justify-center w-52 rounded-full">
             Văn hoá trong công ty
           </div>
-          <h3 className="text-[48px] font-bold bg-gradient-to-r from-[#392F50] to-[#7344C8] bg-clip-text text-transparent mb-4">
+          <h3 className="text-[48px] font-extrabold bg-gradient-to-r from-[#392F50] to-[#7344C8] bg-clip-text text-transparent mb-4">
             Văn hoá của chúng tôi
           </h3>
-          <p className="text-[22px] text-creatix-gray-900 mb-2">
-            "Tại <b>Creatix</b>, chúng tôi tôn vinh sự sáng tạo, đổi mới và tinh
-            thần hợp tác. Chúng tôi xây dựng môi trường làm việc năng động, nơi
-            mọi ý tưởng đều được lắng nghe và mọi thành viên đều có thể phát
-            triển.
+          <p className="text-[18px] text-[#0C0C0C] mb-2">
+            <i>" </i>Tại <b>Creatix</b>, chúng tôi tôn vinh sự sáng tạo, đổi mới
+            và tinh thần hợp tác. Chúng tôi xây dựng môi trường làm việc năng
+            động, nơi mọi ý tưởng đều được lắng nghe và mọi thành viên đều có
+            thể phát triển.<i>"</i>
           </p>
         </div>
       </div>
