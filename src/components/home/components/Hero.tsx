@@ -44,8 +44,6 @@ export default function Hero() {
 
   // For smooth fade transition
   const [show, setShow] = useState(true);
-  const sliderStep = [0, 1, 2];
-  const activeSliderStep = 1;
   useEffect(() => {
     setShow(false);
     const timeout = setTimeout(() => setShow(true), 100); // fade out then in
@@ -166,7 +164,7 @@ export default function Hero() {
         className={
           phoneSlides[activeStep].id === 2
             ? "absolute right-14 bottom-[15.85rem] items-end pointer-events-none z-20 hidden sm:flex"
-            : "absolute right-0 bottom-[14.85rem] items-end pointer-events-none z-20 hidden sm:flex"
+            : "absolute right-0 bottom-[13rem] items-end pointer-events-none z-20 hidden sm:flex"
         }
       >
         <div className="relative w-[320px] sm:w-[420px] md:w-[520px] lg:w-[600px] xl:w-[700px]">
@@ -271,7 +269,7 @@ export default function Hero() {
                 key={idx}
                 src={partner.src}
                 alt={partner.alt}
-                className="max-h-20 lg:max-h-24 object-contain filter brightness-0 invert opacity-90 hover:opacity-100 transition-opacity"
+                className="max-h-20 lg:max-h-24 w-36 object-contain filter brightness-0 invert opacity-90 hover:opacity-100 transition-opacity"
               />
             ))}
           </div>

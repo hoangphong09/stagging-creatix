@@ -65,7 +65,7 @@ const Header: React.FC = () => {
         const res = await fetch("https://ipwho.is/");
         setIsLoadingLanguage(true);
         const data = await res.json();
-        const country = data.country_code || "VN";
+        const country = data.country_code || "US"; // Default to US if detection fails
         console.log("Detected country code:", country);
         const countryToLang: Record<string, string> = {
           US: "en",
@@ -85,7 +85,7 @@ const Header: React.FC = () => {
           KR: "ko",
         };
 
-        const lang = countryToLang[country] || "vi";
+        const lang = countryToLang[country] || "en";
 
         if (lang !== "vi") {
           if (!document.cookie.includes(`/vi/${lang}`)) {
