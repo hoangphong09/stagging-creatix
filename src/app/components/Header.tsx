@@ -4,7 +4,14 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { Button } from "src/components/ui/button";
-import { X } from "lucide-react";
+import { X, Loader2 } from "lucide-react";
+
+declare global {
+  interface Window {
+    googleTranslateElementInit: () => void;
+    google: any;
+  }
+}
 
 const Header: React.FC = () => {
   const router = useRouter();
@@ -12,6 +19,84 @@ const Header: React.FC = () => {
   const [activeMenu, setActiveMenu] = useState<string>("home");
   const [isMobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
   const [hasShadow, setHasShadow] = useState(false);
+  const [isLoadingLanguage, setIsLoadingLanguage] = useState(false);
+
+  // --- Google Translate init ---
+  useEffect(() => {
+    const addGoogleTranslateScript = () => {
+      if (document.getElementById("google-translate-script")) return;
+
+      const script = document.createElement("script");
+      script.id = "google-translate-script";
+      script.src =
+        "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+      document.body.appendChild(script);
+    };
+
+    window.googleTranslateElementInit = () => {
+      new window.google.translate.TranslateElement(
+        { pageLanguage: "vi" },
+        "google_translate_element"
+      );
+    };
+
+    addGoogleTranslateScript();
+  }, []);
+
+  // --- Hàm đổi ngôn ngữ ---
+  const changeLanguage = (lang: string) => {
+    const googleTranslateCookieName = "googtrans";
+    setIsLoadingLanguage(true);
+
+    if (lang === "vi") {
+      document.cookie = `${googleTranslateCookieName}=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;domain=${window.location.hostname}`;
+      document.cookie = `${googleTranslateCookieName}=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;`;
+      location.reload();
+      return;
+    }
+
+    // Set cookie đúng format
+    document.cookie = `${googleTranslateCookieName}=/vi/${lang};path=/;domain=${window.location.hostname}`;
+    document.cookie = `${googleTranslateCookieName}=/vi/${lang};path=/;`;
+
+    // Reload để Google Translate áp dụng
+    location.reload();
+  };
+
+  // --- Tự động detect IP và dịch ---
+  useEffect(() => {
+    const detectLangAndTranslate = async () => {
+      try {
+        const res = await fetch("https://ipwho.is/");
+        const data = await res.json();
+        const country = data.country_code || "VN";
+        console.log("Detected country code:", country);
+        const countryToLang: Record<string, string> = {
+          US: "en",
+          GB: "en",
+          FR: "fr",
+          JP: "ja",
+          VN: "vi",
+          DE: "de",
+          CN: "zh",
+        };
+
+        const lang = countryToLang[country] || "vi";
+
+        // Nếu ngôn ngữ khác tiếng Việt mới dịch
+        if (lang !== "vi") {
+          // Chỉ dịch nếu chưa set cookie
+          if (!document.cookie.includes(`/vi/${lang}`)) {
+            changeLanguage(lang);
+          }
+        }
+      } catch (error) {
+        console.error("Detect language error:", error);
+      }
+    };
+
+    detectLangAndTranslate();
+  }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -107,6 +192,11 @@ const Header: React.FC = () => {
         hasShadow ? "shadow-[0_5px_10px_rgba(0,0,0,0.05)]" : ""
       }`}
     >
+      {isLoadingLanguage && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[9999] pointer-events-auto">
+          <Loader2 className="w-12 h-12 text-white animate-spin" />
+        </div>
+      )}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
@@ -162,15 +252,35 @@ const Header: React.FC = () => {
             ))}
           </nav>
 
-          {/* CTA Button */}
-          <Button
-            className="bg-transparent border border-purple-500 font-bold rounded-xl px-8 py-2 h-11 hover:bg-gradient-primary/10 transition-all duration-200 shadow-none text-[16px]"
-            onClick={() =>
-              (window.location.href = "mailto:admin@creatixtechnology.com")
-            }
-          >
-            <p className="text-gradient-primary">Yêu cầu Demo</p>
-          </Button>
+          {/* Language Buttons */}
+          <div className="flex items-center gap-2">
+            <Button
+              className="bg-transparent border border-purple-500 font-bold rounded-xl px-8 py-2 h-11 hover:bg-gradient-primary/10 transition-all duration-200 shadow-none text-[16px]"
+              onClick={() =>
+                (window.location.href = "mailto:admin@creatixtechnology.com")
+              }
+            >
+              <p className="text-gradient-primary">Yêu cầu Demo</p>
+            </Button>
+          </div>
+          <div className="hidden lg:flex items-center gap-6">
+            <div
+              id="google_translate_element"
+              style={{ display: "none" }}
+            ></div>
+            <button
+              onClick={() => changeLanguage("vi")}
+              className="w-8 h-8 overflow-hidden"
+            >
+              <img src="/country/vietnam.png" alt="Tiếng Việt" />
+            </button>
+            <button
+              onClick={() => changeLanguage("en")}
+              className="w-8 h-8 overflow-hidden"
+            >
+              <img src="/country/england.png" alt="English" />
+            </button>
+          </div>
 
           {/* Mobile Menu Toggle */}
           <div className="lg:hidden">
@@ -240,6 +350,24 @@ const Header: React.FC = () => {
               </Link>
             ))}
           </nav>
+          <div className="flex flex-row gap-4 items-center">
+            <div
+              id="google_translate_element"
+              style={{ display: "none" }}
+            ></div>
+            <button
+              onClick={() => changeLanguage("vi")}
+              className="w-8 h-8 overflow-hidden"
+            >
+              <img src="/country/vietnam.png" alt="Tiếng Việt" />
+            </button>
+            <button
+              onClick={() => changeLanguage("en")}
+              className="w-8 h-8 overflow-hidden"
+            >
+              <img src="/country/england.png" alt="English" />
+            </button>
+          </div>
         </div>
       )}
     </header>

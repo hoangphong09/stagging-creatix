@@ -145,7 +145,22 @@
     }
   }
 }
+/* Ẩn thanh Google mặc định */
+.goog-te-banner-frame.skiptranslate {
+  display: none !important;
+}
+body {
+  top: 0px !important;
+}
 
+/* Ẩn popup nhỏ ở góc */
+.goog-logo-link,
+.goog-te-gadget {
+  display: none !important;
+}
+.skiptranslate {
+  display: none !important;
+}
 /*---break---
   */
 

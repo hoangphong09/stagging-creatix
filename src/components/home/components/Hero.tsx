@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 const phoneSlides = [
   {
     id: 1,
-    img: "/home_hero_slider_1.svg",
+    img: "/hero_slider_1.png",
     badgeTop: (
       <>
         Biến khoảnh khắc thành <br />
@@ -53,7 +53,7 @@ export default function Hero() {
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveStep((prev) => (prev + 1) % phoneSlides.length);
-    }, 5000);
+    }, 500000000);
     return () => clearInterval(interval);
   }, []);
 
