@@ -1,120 +1,39 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback, useMemo } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { Button } from "src/components/ui/button";
-import { X, Loader2 } from "lucide-react";
-
-declare global {
-  interface Window {
-    googleTranslateElementInit: () => void;
-    google: any;
-  }
-}
+import { X, Loader2, ChevronDown } from "lucide-react";
+import { useLanguage } from "@/hooks/useLanguage";
+import { useScrollThreshold } from "@/hooks/useScrollPosition";
+import { APP_CONFIG } from "@/constants";
 
 const Header: React.FC = () => {
   const router = useRouter();
   const pathname = usePathname();
-  const [activeMenu, setActiveMenu] = useState<string>("home");
+  const [activeMenu, setActiveMenu] = useState<string>("about");
   const [isMobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
-  const [hasShadow, setHasShadow] = useState(false);
-  const [isLoadingLanguage, setIsLoadingLanguage] = useState(false);
+  const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
 
-  useEffect(() => {
-    const addGoogleTranslateScript = () => {
-      if (document.getElementById("google-translate-script")) return;
+  // Use custom hooks
+  const { currentLanguage, isLoadingLanguage, changeLanguage } = useLanguage();
+  const hasShadow = useScrollThreshold(10);
 
-      const script = document.createElement("script");
-      script.id = "google-translate-script";
-      script.src =
-        "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
-      document.body.appendChild(script);
-    };
+  // Memoize navigation items to prevent unnecessary re-renders
+  const navigationItems = useMemo(() => APP_CONFIG.navigation.mainMenu, []);
+  const secondaryNavigationItems = useMemo(
+    () => APP_CONFIG.navigation.secondaryMenu,
+    []
+  );
 
-    window.googleTranslateElementInit = () => {
-      new window.google.translate.TranslateElement(
-        { pageLanguage: "vi" },
-        "google_translate_element"
-      );
-    };
-
-    addGoogleTranslateScript();
-  }, []);
-
-  const changeLanguage = (lang: string) => {
-    const googleTranslateCookieName = "googtrans";
-    setIsLoadingLanguage(true);
-
-    if (lang === "vi") {
-      document.cookie = `${googleTranslateCookieName}=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;domain=${window.location.hostname}`;
-      document.cookie = `${googleTranslateCookieName}=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;`;
-      location.reload();
-      return;
-    }
-
-    document.cookie = `${googleTranslateCookieName}=/vi/${lang};path=/;domain=${window.location.hostname}`;
-    document.cookie = `${googleTranslateCookieName}=/vi/${lang};path=/;`;
-
-    location.reload();
-  };
-
-  useEffect(() => {
-    const detectLangAndTranslate = async () => {
-      try {
-        const res = await fetch("https://ipwho.is/");
-        setIsLoadingLanguage(true);
-        const data = await res.json();
-        const country = data.country_code || "US"; // Default to US if detection fails
-        console.log("Detected country code:", country);
-        const countryToLang: Record<string, string> = {
-          US: "en",
-          GB: "en",
-          FR: "fr",
-          JP: "ja",
-          VN: "vi",
-          DE: "de",
-          CN: "zh",
-          IN: "hi",
-          CA: "en",
-          AU: "en",
-          BR: "pt",
-          IT: "it",
-          ES: "es",
-          RU: "ru",
-          KR: "ko",
-        };
-
-        const lang = countryToLang[country] || "en";
-
-        if (lang !== "vi") {
-          if (!document.cookie.includes(`/vi/${lang}`)) {
-            changeLanguage(lang);
-          }
-        }
-      } catch (error) {
-        console.error("Detect language error:", error);
-      } finally {
-        setIsLoadingLanguage(false);
-      }
-    };
-
-    detectLangAndTranslate();
-  }, []);
-
+  // Scroll to top on route change
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setHasShadow(window.scrollY > 10);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const handleMenuClick =
+  // Handle menu click with useCallback for performance
+  const handleMenuClick = useCallback(
     (menu: string, sectionId: string) => (e: React.MouseEvent) => {
       e.preventDefault();
       setActiveMenu(menu);
@@ -133,8 +52,11 @@ const Header: React.FC = () => {
         }
       }
       setMobileMenuOpen(false);
-    };
+    },
+    [pathname, router]
+  );
 
+  // Handle hash navigation
   useEffect(() => {
     if (pathname === "/" && window.location.hash) {
       const sectionId = window.location.hash.replace("#", "");
@@ -147,6 +69,7 @@ const Header: React.FC = () => {
     }
   }, [pathname]);
 
+  // Handle scroll-based menu highlighting
   useEffect(() => {
     const onScroll = () => {
       const scrollY = window.scrollY + 140;
@@ -159,7 +82,7 @@ const Header: React.FC = () => {
       } else if (product && scrollY >= product.offsetTop) {
         setActiveMenu("products");
       } else if (intro && scrollY >= intro.offsetTop) {
-        setActiveMenu("home");
+        setActiveMenu("about");
       }
     };
 
@@ -167,6 +90,7 @@ const Header: React.FC = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Handle route-based menu highlighting
   useEffect(() => {
     if (pathname === "/services" || window.location.hash === "#services") {
       setActiveMenu("services");
@@ -179,56 +103,77 @@ const Header: React.FC = () => {
       setActiveMenu("careers");
     } else if (pathname === "/blog" || window.location.hash === "#blog") {
       setActiveMenu("blog");
-    } else if (pathname === "/story" || window.location.hash === "#story") {
+    } else if (pathname === "/our-story" || window.location.hash === "#story") {
       setActiveMenu("story");
     } else if (pathname === "/") {
-      setActiveMenu("home");
+      setActiveMenu("about");
     }
   }, [pathname]);
 
-  const toggleMobileMenu = () => {
+  // Memoize toggle functions
+  const toggleMobileMenu = useCallback(() => {
     setMobileMenuOpen(!isMobileMenuOpen);
-  };
+  }, [isMobileMenuOpen]);
+
+  const toggleLanguageDropdown = useCallback(() => {
+    setIsLanguageDropdownOpen(!isLanguageDropdownOpen);
+  }, [isLanguageDropdownOpen]);
+
+  const handleLanguageChange = useCallback(
+    (lang: 'en' | 'vi') => {
+      changeLanguage(lang);
+      setIsLanguageDropdownOpen(false);
+    },
+    [changeLanguage]
+  );
+
+  const handleRequestDemo = useCallback(() => {
+    window.location.href = `mailto:${APP_CONFIG.company.email}`;
+  }, []);
 
   return (
     <header
-      className={`w-full bg-white sticky top-0 z-50 transition-shadow duration-200 ${
-        hasShadow ? "shadow-[0_5px_10px_rgba(0,0,0,0.05)]" : ""
+      className={`w-full sticky z-50 ${
+        hasShadow ? "shadow-lg bg-white/95 backdrop-blur-sm" : ""
       }`}
     >
+      {/* Google Translate Element - Hidden but necessary for translation to work */}
+      <div id="google_translate_element" style={{ display: "none" }}></div>
+
+      {/* Language Loading Overlay */}
       {isLoadingLanguage && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[9999] pointer-events-auto">
           <Loader2 className="w-12 h-12 text-white animate-spin" />
         </div>
       )}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
-            <img
-              className="w-10 h-10 rounded-lg"
-              src="/logo.jpg"
-              alt="Creatix Logo"
-            />
-            <span className="text-base sm:text-xl font-bold text-creatix-gray-900 font-inter">
-              Creatix Technology
+            <div className="rounded-lg flex items-center justify-center">
+              <img
+                src="/creatix_logo.png"
+                alt="logo"
+                className="w-10 h-10 object-contain"
+                loading="lazy"
+              />
+            </div>
+            <span className="text-lg sm:text-xl font-bold text-gray-900 font-inter">
+              {APP_CONFIG.company.name}
             </span>
           </Link>
 
           {/* Desktop Menu */}
           <nav className="hidden lg:flex items-center gap-8">
-            {[
-              { name: "Giới thiệu", id: "intro-section", key: "home" },
-              { name: "Sản phẩm", id: "product-section", key: "products" },
-              { name: "Dịch vụ", id: "service-section", key: "services" },
-            ].map((item) => (
+            {navigationItems.map((item) => (
               <a
                 key={item.key}
                 href={`#${item.id}`}
                 className={`text-base ${
                   activeMenu === item.key
-                    ? "font-semibold text-creatix-primary underline decoration-[1.5px] underline-offset-4"
-                    : "font-medium text-creatix-gray-900 hover:text-creatix-primary transition-colors"
+                    ? "font-semibold text-blue-600 underline decoration-[1.5px] underline-offset-4"
+                    : "font-medium text-gray-900 hover:text-blue-600 transition-colors"
                 }`}
                 onClick={handleMenuClick(item.key, item.id)}
               >
@@ -236,18 +181,14 @@ const Header: React.FC = () => {
               </a>
             ))}
 
-            {[
-              { href: "/careers", label: "Tuyển dụng", key: "careers" },
-              { href: "/blog", label: "Blog", key: "blog" },
-              { href: "/our-story", label: "Câu chuyện", key: "story" },
-            ].map((link) => (
+            {secondaryNavigationItems.map((link) => (
               <Link
                 key={link.key}
                 href={link.href}
                 className={`text-base ${
                   activeMenu === link.key
-                    ? "font-semibold text-creatix-primary underline decoration-[1.5px] underline-offset-4"
-                    : "font-medium text-creatix-gray-900 hover:text-creatix-primary transition-colors"
+                    ? "font-semibold text-blue-600 underline decoration-[1.5px] underline-offset-4"
+                    : "font-medium text-gray-900 hover:text-blue-600 transition-colors"
                 }`}
                 onClick={() => setActiveMenu(link.key)}
               >
@@ -256,34 +197,43 @@ const Header: React.FC = () => {
             ))}
           </nav>
 
-          {/* Language Buttons */}
-          <div className="flex items-center gap-2">
+          {/* Right Side - Request Demo Button and Language Dropdown */}
+          <div className="items-center gap-4 hidden sm:flex">
             <Button
-              className="bg-transparent border border-purple-500 font-bold rounded-xl px-8 py-2 h-11 hover:bg-gradient-primary/10 transition-all duration-200 shadow-none text-[16px]"
-              onClick={() =>
-                (window.location.href = "mailto:admin@creatixtechnology.com")
-              }
+              className="text-[16px] font-bold font-inter bg-gradient-to-r from-[#3C39FF] to-[#5199E1] bg-clip-text text-transparent border border-[#3C39FF] rounded-2xl px-8 py-2 h-10 hover:bg-[#3C39FF] transition-all duration-200 shadow-none"
+              onClick={handleRequestDemo}
             >
-              <p className="text-gradient-primary">Yêu cầu Demo</p>
+              Request a Demo
             </Button>
-          </div>
-          <div className="hidden lg:flex items-center gap-6">
-            <div
-              id="google_translate_element"
-              style={{ display: "none" }}
-            ></div>
-            <button
-              onClick={() => changeLanguage("vi")}
-              className="w-8 h-8 overflow-hidden"
-            >
-              <img src="/country/vietnam.png" alt="Tiếng Việt" />
-            </button>
-            <button
-              onClick={() => changeLanguage("en")}
-              className="w-8 h-8 overflow-hidden"
-            >
-              <img src="/country/england.png" alt="English" />
-            </button>
+
+            {/* Language Dropdown */}
+            <div className="relative">
+              <button
+                onClick={toggleLanguageDropdown}
+                className="flex items-center gap-2 px-3 py-2 rounded-2xl border border-[#9B9B9B] hover:border-[#3C39FF] transition-colors h-10"
+              >
+                <span className="text-sm font-medium">
+                  {currentLanguage.toUpperCase()}
+                </span>
+                <ChevronDown className="w-4 h-4" />
+              </button>
+              {isLanguageDropdownOpen && (
+                <div className="absolute right-0 top-full mt-2 w-32 bg-white border border-gray-200 rounded-lg shadow-lg py-2 z-50">
+                  <button
+                    onClick={() => handleLanguageChange("en")}
+                    className="w-full px-4 py-2 text-left text-sm hover:bg-gray-50 transition-colors"
+                  >
+                    English
+                  </button>
+                  <button
+                    onClick={() => handleLanguageChange("vi")}
+                    className="w-full px-4 py-2 text-left text-sm hover:bg-gray-50 transition-colors"
+                  >
+                    Vietnamese
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -312,20 +262,25 @@ const Header: React.FC = () => {
         <div className="lg:hidden fixed inset-0 bg-white z-50 p-6 flex flex-col gap-6">
           <div className="flex justify-between items-center">
             <Link href="/" className="flex items-center gap-2">
-              <img src="/logo.jpg" className="w-8 h-8 rounded" />
-              <span className="font-bold text-lg">Creatix Technology</span>
+              <div className="rounded-lg flex items-center justify-center">
+                <img
+                  src="/creatix_logo.png"
+                  alt="logo"
+                  className="w-10 h-10 object-contain"
+                  loading="lazy"
+                />
+              </div>
+              <span className="font-bold text-lg">
+                {APP_CONFIG.company.name}
+              </span>
             </Link>
             <button onClick={toggleMobileMenu}>
-              <X className="w-6 h-6" />
+              <X className="w-6 w-6" />
             </button>
           </div>
 
           <nav className="flex flex-col gap-4 mt-4">
-            {[
-              { name: "Giới thiệu", id: "intro-section", key: "home" },
-              { name: "Sản phẩm", id: "product-section", key: "products" },
-              { name: "Dịch vụ", id: "service-section", key: "services" },
-            ].map((item) => (
+            {navigationItems.map((item) => (
               <a
                 key={item.key}
                 href={`#${item.id}`}
@@ -336,11 +291,7 @@ const Header: React.FC = () => {
               </a>
             ))}
 
-            {[
-              { href: "/careers", label: "Tuyển dụng", key: "careers" },
-              { href: "/blog", label: "Blog", key: "blog" },
-              { href: "/our-story", label: "Câu chuyện", key: "story" },
-            ].map((link) => (
+            {secondaryNavigationItems.map((link) => (
               <Link
                 key={link.key}
                 href={link.href}
@@ -354,23 +305,50 @@ const Header: React.FC = () => {
               </Link>
             ))}
           </nav>
+
           <div className="flex flex-row gap-4 items-center">
-            <div
-              id="google_translate_element"
-              style={{ display: "none" }}
-            ></div>
-            <button
-              onClick={() => changeLanguage("vi")}
-              className="w-8 h-8 overflow-hidden"
+            <Button
+              className="bg-transparent border border-blue-500 font-bold rounded-xl px-6 py-2 h-10 hover:bg-blue-50 transition-all duration-200 shadow-none text-[14px] text-blue-600"
+              onClick={handleRequestDemo}
             >
-              <img src="/country/vietnam.png" alt="Tiếng Việt" />
-            </button>
-            <button
-              onClick={() => changeLanguage("en")}
-              className="w-8 h-8 overflow-hidden"
-            >
-              <img src="/country/england.png" alt="English" />
-            </button>
+              Request a Demo
+            </Button>
+
+            <div className="relative">
+              <button
+                onClick={toggleLanguageDropdown}
+                className="flex items-center gap-2 px-3 py-2 rounded-2xl border border-[#9B9B9B] hover:border-[#3C39FF] transition-colors h-10"
+              >
+                <span className="text-sm font-medium">
+                  {currentLanguage.toUpperCase()}
+                </span>
+                <ChevronDown className="w-4 h-4" />
+              </button>
+
+              {/* Language Indicator */}
+              {currentLanguage === "vi" && (
+                <div className="absolute -top-2 -right-2 bg-green-500 text-white text-xs px-2 py-1 rounded-full">
+                  VI
+                </div>
+              )}
+
+              {isLanguageDropdownOpen && (
+                <div className="absolute right-0 top-full mt-2 w-32 bg-white border border-gray-200 rounded-lg shadow-lg py-2 z-50">
+                  <button
+                    onClick={() => handleLanguageChange("en")}
+                    className="w-full px-4 py-2 text-left text-sm hover:bg-gray-50 transition-colors"
+                  >
+                    English
+                  </button>
+                  <button
+                    onClick={() => handleLanguageChange("vi")}
+                    className="w-full px-4 py-2 text-left text-sm hover:bg-gray-50 transition-colors"
+                  >
+                    Vietnamese
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       )}

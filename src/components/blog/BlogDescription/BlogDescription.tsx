@@ -7,25 +7,25 @@ import { BLOG_CONTENT } from "@/constants/blogContent";
 const BLOGS = [
   {
     slug: "tuong-lai-ai-trong-doanh-nghiep",
-    title: "Tương Lai của AI trong Doanh Nghiệp",
+    title: "The Future of AI in Business",
     tag: "#1 BÀI VIẾT NỔI BẬT TRONG THÁNG",
     image: "/blog_post_1.jpg",
   },
   {
     slug: "huong-dan-su-dung-magic-eraser",
-    title: "Hướng Dẫn Sử Dụng Magic Eraser",
+    title: "How to Use Magic Eraser",
     tag: "#1 BÀI VIẾT NỔI BẬT TRONG THÁNG",
     image: "/blog_post_2.jpg",
   },
   {
     slug: "figma-translate-plugin-bi-quyet-dich-nhanh",
-    title: "Figma Translate Plugin: Bí Quyết Dịch Nhanh",
+    title: "Figma Translate Plugin: Quick Translation",
     tag: "#1 BÀI VIẾT NỔI BẬT TRONG THÁNG",
     image: "/blog_post_3.jpg",
   },
   {
     slug: "5-cong-cu-ai-cho-nha-thiet-ke",
-    title: "5 Công Cụ AI Hàng Đầu Cho Nhà Thiết Kế",
+    title: "5 AI Tools for Designers",
     tag: "#1 BÀI VIẾT NỔI BẬT TRONG THÁNG",
     image: "/blog_post_4.jpg",
   },
@@ -45,34 +45,31 @@ export default function BlogDescriptionPage() {
   if (!blog) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center">
-        <div className="text-xl">Không tìm thấy bài viết này.</div>
+        <div className="text-xl">Not found.</div>
         <button
           className="flex items-center gap-2 text-[#6366F1] font-bold mb-8"
           onClick={() => router.push("/blog")}
         >
           <span className="text-xl">&#8592;</span>
-          <p className="hover:underline">Quay lại Blog</p>
+          <p className="hover:underline">Back to Blog</p>
         </button>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-white px-4 pt-8 pb-16">
+    <div className="min-h-screen flex flex-col px-4 pt-8 pb-16">
       <div className="max-w-5xl w-full mx-auto">
         <button
           className="flex items-center gap-2 text-[#6366F1] font-bold mb-8"
           onClick={() => router.push("/blog")}
         >
           <span className="text-xl">&#8592;</span>
-          <p className="hover:underline">Quay lại Blog</p>
+          <p className="hover:underline">Back to Blog</p>
         </button>
         <h1 className="text-[32px] md:text-[36px] font-bold text-creatix-gray-900 mb-2 leading-tight">
           {blog.title}
         </h1>
-        <div className="text-xs text-creatix-gray-900 mb-6 font-bold">
-          {blog.tag}
-        </div>
         <img
           src={blog.image}
           alt={blog.title}
@@ -80,7 +77,7 @@ export default function BlogDescriptionPage() {
           style={{ maxHeight: 520 }}
         />
         <div className="prose max-w-none text-base text-creatix-gray-900 mb-12">
-          {BLOG_CONTENT[blog.slug]}
+          {BLOG_CONTENT[blog.slug as keyof typeof BLOG_CONTENT]}
         </div>
       </div>
       <div className="max-w-6xl w-full mx-auto mt-8">
@@ -89,7 +86,7 @@ export default function BlogDescriptionPage() {
           style={{ borderColor: "#8B5CF6" }}
         >
           <h3 className="text-lg font-bold mb-8 text-creatix-gray-900">
-            CÁC BÀI VIẾT KHÁC
+            OTHER ARTICLES
           </h3>
         </div>
 
@@ -110,7 +107,7 @@ export default function BlogDescriptionPage() {
                   {post.title}
                 </h4>
                 <span className="text-[#6366F1] text-xs font-medium hover:underline mt-auto">
-                  Đọc thêm &gt;
+                  Read more &gt;
                 </span>
               </div>
             </Link>

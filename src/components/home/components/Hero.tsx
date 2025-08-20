@@ -1,21 +1,29 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback, useMemo } from "react";
+import { PRODUCTS } from "@/constants/product";
+import { SERVICES } from "@/constants/service";
+import { DownloadButton } from "@/components/ui/DownloadButton";
+import { ProductCard } from "@/components/ui/ProductCard";
+import { ServiceCard } from "@/components/ui/ServiceCard";
+import { COMMON_STYLES } from "@/constants";
 
 // Slide data: each slide has its own image and text content
-const phoneSlides = [
+const PHONE_SLIDES = [
   {
     id: 1,
     img: "/home_hero_slider_1.png",
     badgeTop: (
       <>
-        Biến khoảnh khắc thành <br />
-        nghệ thuật
+        Turning Precious Life Moments
+        <br />
+        into Timeless Works of Art
       </>
     ),
     badgeBottom: (
       <>
-        Khám phá sức mạnh chỉnh ảnh <br />
-        bằng AI.
+        Discover the power of
+        <br />
+        photo editing with AI.
       </>
     ),
   },
@@ -24,149 +32,180 @@ const phoneSlides = [
     img: "/home_hero_slider_2.png",
     badgeTop: (
       <>
-        Xóa bỏ mọi phiền nhiễu. Biến <br />
-        video của bạn thành hình ảnh <br />
-        ấn tượng
+        Eliminate Distractions. Turn your <br />
+        into stunning visuals.
       </>
     ),
     badgeBottom: (
       <>
-        Biến cảnh quay thực tế thành
+        Turn real footage into animated
         <br />
-        câu chuyện hoạt hình.
+        stories with creativity.
       </>
     ),
   },
-];
+] as const;
+
+// StepIcon component
+const StepIcon: React.FC<{
+  stepIndex: number;
+  active: boolean;
+  onClick?: () => void;
+  clickable?: boolean;
+}> = ({ stepIndex, active, onClick, clickable = false }) => (
+  <div className="flex flex-col items-center">
+    <div
+      className={`transition-all duration-300 flex items-center justify-center rounded-2xl w-20 h-20 mb-0
+        ${clickable ? "cursor-pointer pointer-events-auto" : ""}
+      `}
+      onClick={clickable && onClick ? onClick : undefined}
+    >
+      <img
+        src={stepIndex === 0 ? "/slider_1.png" : "/slider_2.png"}
+        alt="Eraser Icon"
+        className={`w-full h-full object-contain ${
+          active ? "" : "opacity-30"
+        }`}
+        draggable={false}
+        loading="lazy"
+      />
+    </div>
+    <div
+      className={`h-8 w-px border-l-2 border-dashed mb-2 mt-5 ${
+        active ? "border-[#635BFF]" : "border-gray-300"
+      }`}
+    />
+  </div>
+);
 
 export default function Hero() {
   const [activeStep, setActiveStep] = useState(0);
+  const [show, setShow] = useState(true);
+
+  // Memoize slide data to prevent unnecessary re-renders
+  const currentSlide = useMemo(() => PHONE_SLIDES[activeStep], [activeStep]);
 
   // For smooth fade transition
-  const [show, setShow] = useState(true);
   useEffect(() => {
     setShow(false);
-    const timeout = setTimeout(() => setShow(true), 100); // fade out then in
+    const timeout = setTimeout(() => setShow(true), 100);
     return () => clearTimeout(timeout);
   }, [activeStep]);
 
+  // Auto-advance slides
   useEffect(() => {
     const interval = setInterval(() => {
-      setActiveStep((prev) => (prev + 1) % phoneSlides.length);
+      setActiveStep((prev) => (prev + 1) % PHONE_SLIDES.length);
     }, 5000);
     return () => clearInterval(interval);
+  }, []);
+
+  // Memoize step click handler
+  const handleStepClick = useCallback((index: number) => {
+    setActiveStep(index);
   }, []);
 
   return (
     <section
       id="intro-section"
-      className="relative bg-white overflow-hidden"
+      className="relative overflow-hidden"
       style={{ minHeight: "837px" }}
     >
-      {/* Decorative Left Cover */}
-      <img
-        src="/home_hero_left_cover_1.svg"
-        alt=""
-        aria-hidden="true"
-        className="hidden md:block absolute left-0 bottom-10 w-[360px] lg:w-[480px] xl:w-[520px] h-auto z-20 pointer-events-none select-none"
-        style={{ minWidth: 0 }}
-      />
-
-      {/* Decorative Wavy Background */}
-      {/* <img
-        src="/home_hero_wavy_bg.svg"
-        alt=""
-        aria-hidden="true"
-        className="absolute inset-0 w-full h-full object-cover z-10 pointer-events-none select-none"
-        style={{ objectFit: "cover" }}
-      /> */}
-
       {/* Main Content */}
-      <div className="relative z-30 max-w-7xl mx-auto pt-2 px-4 sm:px-6 sm:pt-24">
+      <div className="relative z-30 max-w-[90rem] mx-auto pt-2 px-4 sm:px-6 sm:pt-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center min-h-[600px]">
           {/* Left */}
           <div className="space-y-8">
             <div className="space-y-6">
-              <h1 className="text-[56px] font-extrabold leading-tight">
-                <span className="bg-gradient-primary bg-clip-text text-transparent font-vietnam-pro">
+              <h1 className="text-[56px] sm:text-[64px] font-extrabold leading-tight">
+                <span className={`font-extrabold ${COMMON_STYLES.gradients.primary} bg-clip-text text-transparent font-vietnam-pro`}>
                   Creatix Technology
                 </span>
                 <br />
-                <span className="text-creatix-gray-900 font-inter text-2xl lg:text-4xl">
-                  "Tiên phong trong lĩnh vực"
+                <span className="text-creatix-gray-900 font-vietnam-pro text-[32px] sm:text-[42px]">
+                  Pioneering in the field
                 </span>
               </h1>
 
-              <p className="text-base sm:text-lg text-creatix-gray-900 leading-relaxed max-w-lg">
-                <span className="font-bold">Creatix Technology</span> chuyên
-                cung cấp dịch vụ và giải pháp công nghệ hiện đại, giúp đơn giản
-                hóa quy trình và nâng cao hiệu quả kinh doanh.
+              <p className="text-base sm:text-xl text-creatix-gray-900 leading-relaxed">
+                <span className="font-bold">Creatix Technology </span>
+                specializes in providing modern technology services and
+                solutions, helping to simplify processes and improve business
+                efficiency.
               </p>
             </div>
 
             {/* Download Buttons */}
             <div className="space-y-6">
-              <p className="text-xs sm:text-sm font-bold text-creatix-gray-900 uppercase tracking-wide">
-                Tải ngay để trải nghiệm thử dịch vụ của chúng tôi
+              <p className="text-xs sm:text-lg font-semibold text-creatix-gray-900 uppercase tracking-wide">
+                Download now to experience our services
               </p>
               <div className="flex flex-row gap-6">
-                {/* Google Play */}
-                <div
-                  className="flex items-center gap-3 bg-creatix-primary px-4 py-3 rounded-xl hover:opacity-90 cursor-pointer"
-                  onClick={() => {
-                    // Android → Google Play
-                    window.open(
-                      "https://play.google.com/store/apps/details?id=com.duygiangdg.magiceraser",
-                      "_blank"
-                    );
-                  }}
-                >
-                  <img
-                    src="/chplay.png"
-                    alt="Google Play"
-                    className="w-8 h-8"
-                  />
-                  <div className="text-white">
-                    <div className="text-sm font-semibold">Get it on</div>
-                    <div className="text-lg font-bold">Google Play</div>
-                  </div>
-                </div>
-
-                {/* App Store */}
-                <div
-                  className="flex items-center gap-3 bg-creatix-gray-900 px-4 py-3 rounded-xl hover:opacity-90 cursor-pointer"
-                  onClick={() => {
-                    // IOS → App Store
-                    window.open(
-                      "https://apps.apple.com/us/app/magic-eraser-remove-object/id1619950778",
-                      "_blank"
-                    );
-                  }}
-                >
-                  <img
-                    src="/app_store.png"
-                    alt="App Store"
-                    className="w-8 h-8"
-                  />
-                  <div className="text-white">
-                    <div className="text-sm font-semibold">Download on the</div>
-                    <div className="text-lg font-bold">App Store</div>
-                  </div>
-                </div>
+                <DownloadButton platform="google-play" />
+                <DownloadButton platform="app-store" />
               </div>
             </div>
           </div>
         </div>
+
+        {/* PRODUCT SECTION */}
+        <div className="max-w-[100rem] mx-auto sm:mt-32 px-4 sm:px-6 lg:px-8 pt-20 py-24 shadow-xl rounded-3xl overflow-hidden relative z-10 bg-white">
+          {/* Header */}
+          <div className="text-center mb-16 space-y-4 z-10 px-2 sm:px-64 flex justify-center flex-col items-center">
+            <div className="inline-flex items-center px-3 py-1 bg-[#635BFF1A] rounded-lg">
+              <span className="text-sm font-semibold text-creatix-primary tracking-wide">
+                Outstanding product
+              </span>
+            </div>
+            <p className={`text-[36px] sm:text-[56px] font-extrabold ${COMMON_STYLES.gradients.primary} bg-clip-text text-transparent`}>
+              Feature Products
+            </p>
+            <p className="font-inter text-base sm:text-xl text-[#383838] font-medium">
+              "We carefully select the best products – combining practicality,
+              great user experience, and simplicity in every action."
+            </p>
+          </div>
+
+          {/* Products Grid */}
+          <div className="grid lg:grid-cols-3 gap-8" id="product-section">
+            {PRODUCTS.map((product, index) => (
+              <ProductCard key={product.title + index} product={product} />
+            ))}
+          </div>
+        </div>
+
+        {/* SERVICES SECTION */}
+        <div className="max-w-[90rem] mt-32 mx-auto px-4 sm:px-6 lg:px-8 mb-32">
+          {/* Header */}
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-16 gap-8">
+            <div className="space-y-2">
+              <div className="inline-flex items-center px-3 py-1 bg-[#635BFF1A] rounded-lg mb-6 sm:mb-2">
+                <span className="text-xs sm:text-sm font-inter font-semibold text-[#635BFF] tracking-wide">
+                  Our AI Services
+                </span>
+              </div>
+              <h2 className="text-[28px] sm:text-[48px] font-extrabold text-[#0C0C0C] leading-tight">
+                We provide AI services
+              </h2>
+            </div>
+
+            <p className="text-base sm:text-xl font-inter font-medium text-[#383838] opacity-80 max-w-lg leading-relaxed">
+              Optimize performance with AI services, analytics, and modern
+              application development.
+            </p>
+          </div>
+
+          {/* Services Grid */}
+          <div className="grid lg:grid-cols-3 gap-8" id="service-section">
+            {SERVICES.map((service, index) => (
+              <ServiceCard key={service.title + index} service={service} />
+            ))}
+          </div>
+        </div>
       </div>
 
-      {/* Right - Phone: Absolutely positioned, flush right and bottom (now flush with partner section) */}
-      <div
-        className={
-          phoneSlides[activeStep].id === 2
-            ? "absolute right-14 bottom-[15.85rem] items-end pointer-events-none z-20 hidden sm:flex"
-            : "absolute right-0 bottom-[13rem] items-end pointer-events-none z-20 hidden sm:flex"
-        }
-      >
+      {/* Right - Phone: Absolutely positioned, flush right and bottom */}
+      <div className="absolute right-14 top-[1.5rem] items-end pointer-events-none z-20 hidden sm:flex">
         <div className="relative w-[320px] sm:w-[420px] md:w-[520px] lg:w-[600px] xl:w-[700px]">
           {/* Hand Image with smooth transition */}
           <div
@@ -176,147 +215,66 @@ export default function Hero() {
             key={activeStep}
           >
             <img
-              src={phoneSlides[activeStep].img}
+              src={currentSlide.img}
               alt="Mobile App Mockup"
-              className="w-full h-auto drop-shadow-2xl"
+              className="w-full h-full drop-shadow-2xl"
               style={{ display: "block" }}
+              loading="lazy"
             />
+            
             {/* Badge - Top Right */}
             <div
               className={
-                phoneSlides[activeStep].id === 2
-                  ? "absolute -top-1 right-28 bg-gradient-to-b from-[#f3f3ff] to-[#f0f6ff] border border-purple-300 rounded-xl p-4 shadow-lg pointer-events-auto"
-                  : "absolute top-3 right-28 bg-gradient-red-light border border-red-200 rounded-xl p-4 shadow-lg pointer-events-auto"
+                currentSlide.id === 2
+                  ? "absolute top-10 right-28 bg-gradient-to-b from-[#f3f3ff] to-[#f0f6ff] border border-purple-300 rounded-xl p-4 shadow-lg pointer-events-auto"
+                  : "absolute top-10 right-28 bg-gradient-red-light border border-red-200 rounded-xl p-4 shadow-lg pointer-events-auto"
               }
             >
               <p
                 className={
-                  phoneSlides[activeStep].id === 2
+                  currentSlide.id === 2
                     ? "text-sm font-medium bg-gradient-to-b from-purple-600 to-blue-600 bg-clip-text text-transparent leading-6"
                     : "text-sm font-medium bg-gradient-red bg-clip-text text-transparent leading-6"
                 }
               >
-                {phoneSlides[activeStep].badgeTop}
+                {currentSlide.badgeTop}
               </p>
             </div>
+            
             {/* Badge - Bottom Left */}
             <div
               className={
-                phoneSlides[activeStep].id === 2
-                  ? "absolute bottom-24 left-1 bg-gradient-to-b from-[#f3f3ff] to-[#f0f6ff] border border-purple-300 rounded-xl p-4 shadow-lg pointer-events-auto"
+                currentSlide.id === 2
+                  ? "absolute bottom-40 -left-1 bg-gradient-to-b from-[#f3f3ff] to-[#f0f6ff] border border-purple-300 rounded-xl p-4 shadow-lg pointer-events-auto"
                   : "absolute bottom-40 -left-1 bg-gradient-red-light border border-red-200 rounded-xl p-4 shadow-lg pointer-events-auto"
               }
             >
               <p
                 className={
-                  phoneSlides[activeStep].id === 2
+                  currentSlide.id === 2
                     ? "text-sm font-medium bg-gradient-to-b from-purple-600 to-blue-600 bg-clip-text text-transparent leading-6"
                     : "text-sm font-medium bg-gradient-red bg-clip-text text-transparent leading-6"
                 }
               >
-                {phoneSlides[activeStep].badgeBottom}
+                {currentSlide.badgeBottom}
               </p>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Step indicators */}
       <div className="step-group absolute top-[20rem] right-[2rem] transform -translate-y-1/2 z-30 flex-col gap-4 hidden sm:flex">
-        {phoneSlides.map((slide, index) => (
+        {PHONE_SLIDES.map((_, index) => (
           <StepIcon
-            key={slide.id}
+            key={index}
+            stepIndex={index}
             active={activeStep === index}
             clickable={true}
-            onClick={() => setActiveStep(index)}
+            onClick={() => handleStepClick(index)}
           />
         ))}
       </div>
-      {/* Partner Logos Section */}
-      <section className="w-screen relative z-10 left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] bg-gradient-primary py-6 sm:h-52">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-10">
-            <h2 className="text-2xl font-bold text-white tracking-wide">
-              Các đối tác của chúng tôi
-            </h2>
-          </div>
-          <div className="flex flex-wrap justify-center items-center gap-10 lg:gap-20 px-2">
-            {[
-              {
-                alt: "Unity",
-                src: "/partner/unity.png",
-              },
-              {
-                alt: "Pangle",
-                src: "/partner/pangle.png",
-              },
-              {
-                alt: "Liftoff",
-                src: "/partner/liftoff.png",
-              },
-              {
-                alt: "AppLovin",
-                src: "/partner/applovin.png",
-              },
-              {
-                alt: "AdMob",
-                src: "/partner/admob.png",
-              },
-              {
-                alt: "Adjust",
-                src: "/partner/adjust.png",
-              },
-            ].map((partner, idx) => (
-              <img
-                key={idx}
-                src={partner.src}
-                alt={partner.alt}
-                className="max-h-20 lg:max-h-24 w-36 object-contain filter brightness-0 invert opacity-90 hover:opacity-100 transition-opacity"
-              />
-            ))}
-          </div>
-        </div>
-      </section>
     </section>
-  );
-}
-
-// StepIcon component
-function StepIcon({
-  active,
-  onClick,
-  clickable = false,
-}: {
-  active: boolean;
-  onClick?: () => void;
-  clickable?: boolean;
-}) {
-  return (
-    <div className="flex flex-col items-center">
-      <div
-        className={`transition-all duration-300 flex items-center justify-center rounded-2xl w-16 h-16 mb-0
-        ${
-          active
-            ? "border-2 border-[#635BFF] bg-[rgba(109,100,251,0.15)]"
-            : "border-2 border-gray-200 bg-gray-100 opacity-60"
-        }
-        ${clickable ? "cursor-pointer pointer-events-auto" : ""}
-      `}
-        style={{
-          boxShadow: active ? "0px 0px 10px rgba(109,100,251,0.15)" : undefined,
-        }}
-        onClick={clickable && onClick ? onClick : undefined}
-      >
-        <img
-          src="/app_logo.png"
-          alt="Eraser Icon"
-          className={`w-8 h-8 object-contain ${active ? "" : "opacity-60"}`}
-          draggable={false}
-        />
-      </div>
-      <div
-        className={`h-8 w-px border-l-2 border-dashed mb-2 mt-5 ${
-          active ? "border-[#635BFF]" : "border-gray-300"
-        }`}
-      />
-    </div>
   );
 }

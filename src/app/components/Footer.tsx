@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React from "react";
+import { APP_CONFIG } from "@/constants";
 
 const Footer: React.FC = () => {
   return (
@@ -10,11 +11,12 @@ const Footer: React.FC = () => {
       }}
     >
       <img
-        src="/footer_wavy_bg.svg"
+        src="/footer_wavy_bg.png"
         alt="wavy background"
         aria-hidden="true"
         className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none z-0"
         style={{ objectFit: "cover" }}
+        loading="lazy"
       />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -22,32 +24,32 @@ const Footer: React.FC = () => {
           {/* Quick Links */}
           <div className="space-y-6">
             <h3 className="text-xl font-bold uppercase tracking-wide">
-              LIÊN KẾT NHANH
+              Quick Links
             </h3>
             <div className="space-y-4">
               <Link
                 href="#intro-section"
                 className="block text-base hover:text-purple-200 transition-colors"
               >
-                Giới thiệu
+                About
               </Link>
               <Link
                 href="#product-section"
                 className="block text-base hover:text-purple-200 transition-colors"
               >
-                Sản phẩm
+                Products
               </Link>
               <Link
                 href="/careers"
                 className="block text-base hover:text-purple-200 transition-colors"
               >
-                Tuyển dụng
+                Careers
               </Link>
               <a
-                href="mailto:admin@creatixtechnology.com"
+                href={`mailto:${APP_CONFIG.company.email}`}
                 className="block text-base hover:text-purple-200 transition-colors"
               >
-                Liên hệ
+                Contact
               </a>
             </div>
           </div>
@@ -55,11 +57,11 @@ const Footer: React.FC = () => {
           {/* Contact Info */}
           <div className="space-y-6">
             <h3 className="text-xl font-bold uppercase tracking-wide">
-              LIÊN HỆ
+              Contact
             </h3>
             <div className="space-y-4">
-              <p className="text-base">Email: admin@creatixtechnology.com</p>
-              <p className="text-base">Điện thoại: (+84) 817 991 996</p>
+              <p className="text-base">Email: {APP_CONFIG.company.email}</p>
+              <p className="text-base">Điện thoại: {APP_CONFIG.company.phone}</p>
             </div>
           </div>
         </div>
@@ -71,16 +73,15 @@ const Footer: React.FC = () => {
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
           {/* Company Info */}
           <div className="space-y-4">
-            <h2 className="text-3xl font-bold">Creatix Technology</h2>
+            <h2 className="text-3xl font-bold">{APP_CONFIG.company.name}</h2>
             <p className="text-base max-w-full">
-              "Đổi mới sáng tạo, kiến tạo tương lai với giải pháp AI tiên
-              phong."
+              "Innovating to create the future with pioneering AI solutions."
             </p>
           </div>
 
           {/* Copyright */}
           <p className="text-base opacity-90 lg:text-right">
-            © 2025 Creatix Technology. All rights reserved.
+            © 2025 {APP_CONFIG.company.name}. All rights reserved.
           </p>
         </div>
       </div>

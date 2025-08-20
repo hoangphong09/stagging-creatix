@@ -1,117 +1,71 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+  useMemo,
+} from "react";
 import Link from "next/link";
-
-const SLIDER_POSTS = [
-  {
-    title: "Tương Lai của AI trong Doanh Nghiệp",
-    summary:
-      "Khám phá cách AI đang thay đổi cách doanh nghiệp vận hành và tạo ra giá trị.",
-    image: "/blog_post_1.jpg",
-    tag: "#1 BÀI VIẾT NỔI BẬT TRONG THÁNG",
-    link: "#",
-    slug: "tuong-lai-ai-trong-doanh-nghiep",
-  },
-  {
-    title: "Hướng Dẫn Sử Dụng Magic Eraser",
-    summary: "Cách sử dụng Magic Eraser để chỉnh sửa ảnh siêu nhanh.",
-    image: "/blog_post_2.jpg",
-    tag: "#1 BÀI VIẾT NỔI BẬT",
-    link: "#",
-    slug: "huong-dan-su-dung-magic-eraser",
-  },
-  {
-    title: "Figma Translate Plugin: Bí Quyết Dịch Nhanh",
-    summary:
-      "Hướng dẫn sử dụng Figma Translate Plugin để dịch nhanh giao diện thiết kế.",
-    image: "/blog_post_3.jpg",
-    tag: "#1 BÀI VIẾT NỔI BẬT",
-    link: "#",
-    slug: "figma-translate-plugin-bi-quyet-dich-nhanh",
-  },
-];
-
-const OTHER_POSTS = [
-  {
-    title: "Tương lai của AI trong doanh nghiệp",
-    summary: "Khám phá AI và sự đổi mới sáng tạo cho doanh nghiệp và tổ chức.",
-    image: "/blog_post_1.jpg",
-    tag: "",
-    slug: "tuong-lai-ai-trong-doanh-nghiep",
-  },
-  {
-    title: "5 Công Cụ AI Hàng Đầu Cho Nhà Thiết Kế",
-    summary:
-      "Tối ưu hóa công việc, sáng tạo và đổi mới với các công cụ AI hiện đại.",
-    image: "/blog_post_4.jpg",
-    tag: "",
-    slug: "5-cong-cu-ai-cho-nha-thiet-ke",
-  },
-  {
-    title: "Hướng Dẫn Sử Dụng ",
-    summary: "Cách sử dụng Magic Eraser để chỉnh sửa ảnh siêu nhanh.",
-    image: "/blog_post_2.jpg",
-    tag: "Magic Eraser",
-    slug: "huong-dan-su-dung-magic-eraser",
-  },
-  {
-    title: "Figma Translate Plugin: Bí Quyết Dịch Nhanh",
-    summary:
-      "Hướng dẫn sử dụng Figma Translate Plugin để dịch nhanh giao diện thiết kế.",
-    image: "/blog_post_3.jpg",
-    tag: "",
-    slug: "figma-translate-plugin-bi-quyet-dich-nhanh",
-  },
-];
-
-const CARD_WIDTH = 960;
-const CARD_GAP = 24;
+import { SLIDER_POSTS, OTHER_POSTS } from "@/constants/post";
 
 export default function BlogPage() {
   const [current, setCurrent] = useState(0);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const total = SLIDER_POSTS.length;
 
+  // Auto-advance slides
   useEffect(() => {
     timeoutRef.current = setTimeout(() => {
       setCurrent((prev) => (prev + 1) % total);
-    }, 50000000); // Adjust the timeout duration as needed
+    }, 100000);
     return () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
   }, [current, total]);
 
-  const goTo = (idx: number) => {
+  // Memoize navigation functions
+  const goTo = useCallback((idx: number) => {
     setCurrent(idx);
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
-  };
+  }, []);
 
-  const prev = () => goTo((current - 1 + total) % total);
-  const next = () => goTo((current + 1) % total);
+  const prev = useCallback(
+    () => goTo((current - 1 + total) % total),
+    [current, total, goTo]
+  );
+  const next = useCallback(
+    () => goTo((current + 1) % total),
+    [current, total, goTo]
+  );
 
-  const getVisibleSlides = () => {
+  // Memoize visible slides calculation
+  const getVisibleSlides = useCallback(() => {
     const prevIdx = (current - 1 + total) % total;
     const nextIdx = (current + 1) % total;
     return [prevIdx, current, nextIdx];
-  };
+  }, [current, total]);
+
+  const visibleSlides = useMemo(() => getVisibleSlides(), [getVisibleSlides]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-white overflow-x-hidden">
+    <div className="min-h-screen flex flex-col overflow-x-hidden">
       <img
-        src="/blog_right_obj.svg"
-        alt=""
+        src="/blog_blur_yellow.png"
+        alt="blog_blur_yellow"
         aria-hidden="true"
         loading="lazy"
         className="pointer-events-none select-none absolute left-0 top-[5rem] w-[20vw] max-w-[700px] z-0"
       />
       <img
-        src="/blog_left_obj.svg"
-        alt=""
+        src="/blog_blur_purple.png"
+        alt="blog_blur_purple"
         aria-hidden="true"
         loading="lazy"
         className="pointer-events-none select-none absolute right-0 top-2 w-[25vw] max-w-[700px] z-0"
       />
+
       <main className="flex-1 flex flex-col items-center px-4 pt-8 pb-16">
         <section className="w-full max-w-6xl mx-auto">
           <div className="flex flex-col items-center mb-[8rem] mt-[8rem]">
@@ -120,14 +74,14 @@ export default function BlogPage() {
                 Blog
               </span>
               <span className="text-[64px] font-extrabold text-creatix-gray-900">
-                công nghệ
+                technology
               </span>
             </div>
             <p className="text-[20px] text-gray-400 text-center max-w-2xl">
-              Khám phá các bài viết mới nhất về AI, công nghệ và đổi mới sáng
-              tạo.
+              Explore the latest articles on AI, technology and innovation.
             </p>
           </div>
+
           <div className="relative w-full flex items-center justify-center mb-16 select-none">
             <button
               aria-label="Previous"
@@ -148,7 +102,7 @@ export default function BlogPage() {
             </button>
 
             <div
-              className="flex items-center justify-center transition-transform duration-500 relative "
+              className="flex items-center justify-center transition-transform duration-500 relative"
               style={{
                 width: "100%",
                 maxWidth: "100%",
@@ -156,13 +110,13 @@ export default function BlogPage() {
                 height: 420,
               }}
             >
-              {getVisibleSlides().map((idx, i) => {
+              {visibleSlides.map((idx, i) => {
                 const post = SLIDER_POSTS[idx];
                 const isCurrent = i === 1;
 
                 return (
                   <div
-                    key={idx}
+                    key={`slide-${idx}`}
                     className={`absolute top-0 transition-all duration-500 rounded-3xl shadow-xl overflow-hidden group`}
                     style={{
                       width: isCurrent ? "90vw" : "72vw",
@@ -196,64 +150,23 @@ export default function BlogPage() {
                         }}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-3xl" />
-                      {/* Overlay elements */}
-                      <div className="absolute top-0 left-0 w-full flex justify-between items-start p-5 z-20 pointer-events-none">
-                        {/* Tag label */}
-                        {post.tag && (
-                          <span className="text-white text-xs font-bold px-3 py-1 rounded-lg pointer-events-auto">
-                            {post.tag}
-                          </span>
-                        )}
-                        {/* Social icons */}
-                        <div className="flex gap-2 pointer-events-auto">
-                          <a href="#" tabIndex={isCurrent ? 0 : -1}>
-                            <img
-                              src="/social/facebook.png"
-                              alt="Facebook"
-                              className="w-6 h-6"
-                            />
-                          </a>
-                          <a href="#" tabIndex={isCurrent ? 0 : -1}>
-                            <img
-                              src="/social/facebook_2.png"
-                              alt="Twitter"
-                              className="w-6 h-6"
-                            />
-                          </a>
-                          <a href="#" tabIndex={isCurrent ? 0 : -1}>
-                            <img
-                              src="/social/google.png"
-                              alt="Google"
-                              className="w-6 h-6"
-                            />
-                          </a>
-                          <a href="#" tabIndex={isCurrent ? 0 : -1}>
-                            <img
-                              src="/social/twitter.png"
-                              alt="LinkedIn"
-                              className="w-6 h-6"
-                            />
-                          </a>
-                        </div>
-                      </div>
                     </div>
                     <div className="relative z-10 w-full h-full flex flex-col justify-end p-8">
-                      <span className="block text-white text-xs font-semibold mb-2">
-                        {post.tag}
-                      </span>
                       <h2 className="text-2xl md:text-3xl font-bold text-white mb-2 drop-shadow-lg">
                         {post.title}
                       </h2>
                       <p className="text-white text-base mb-3">
                         {post.summary}
                       </p>
-                      <a
-                        href={`/blog/${post.slug}`}
-                        className="text-white font-semibold underline"
-                        tabIndex={isCurrent ? 0 : -1}
-                      >
-                        Đọc thêm &gt;
-                      </a>
+                      <div className="px-4 py-2 bg-white rounded-xl w-[120px] h-[30px] flex items-center justify-center hover:opacity-80 transition-opacity duration-300 cursor-pointer">
+                        <a
+                          href={`/blog/${post.slug}`}
+                          className="text-[#635BFF] font-semibold text-sm"
+                          tabIndex={isCurrent ? 0 : -1}
+                        >
+                          Read more
+                        </a>
+                      </div>
                     </div>
                   </div>
                 );
@@ -282,14 +195,14 @@ export default function BlogPage() {
             <div className="absolute -bottom-28 left-1/2 -translate-x-1/2 flex gap-2 z-20">
               {SLIDER_POSTS.map((_, idx) => (
                 <button
-                  key={idx}
+                  key={`pagination-${idx}`}
                   onClick={() => goTo(idx)}
                   className={`h-2 rounded-full transition-all duration-300 ${
                     idx === current
                       ? "w-12 bg-[#6366F1]"
                       : "w-4 bg-[#6366F1]/20"
                   }`}
-                  aria-label={`Chuyển đến slide ${idx + 1}`}
+                  aria-label={`Go to slide ${idx + 1}`}
                 />
               ))}
             </div>
@@ -299,17 +212,17 @@ export default function BlogPage() {
         <section className="w-full max-w-6xl mx-auto mt-32">
           <div className="mb-6">
             <div className="text-lg font-bold border-l-4 border-[#8B5CF6] pl-3">
-              CÁC BÀI VIẾT KHÁC
+              OTHER ARTICLES
             </div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-14">
             {OTHER_POSTS.map((post, idx) => (
               <Link
-                key={post.title + idx}
+                key={`other-post-${post.title}-${idx}`}
                 href={`/blog/${post.slug}`}
                 className="bg-transparent rounded-2xl shadow-md overflow-hidden flex flex-col transition hover:shadow-xl"
               >
-                <div className="relative w-full h-[15rem] overflow-hidden">
+                <div className="relative w-full h-[250px] overflow-hidden">
                   <img
                     src={post.image}
                     alt={post.title}
@@ -335,7 +248,7 @@ export default function BlogPage() {
                     {post.summary}
                   </p>
                   <span className="text-[#6366F1] font-medium hover:underline text-base mt-auto">
-                    Đọc thêm →
+                    Read more →
                   </span>
                 </div>
               </Link>

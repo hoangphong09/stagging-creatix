@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Inter, Poppins } from "next/font/google"; // Import fonts if needed, or manage via CSS
-import "./styles.css"; // Import additional global styles
+import { Inter, Poppins } from "next/font/google";
+import "./styles.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import { APP_CONFIG } from "@/constants";
 
 // Configure fonts if using next/font
 const inter = Inter({ subsets: ["latin"] });
@@ -13,11 +14,9 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Creatix Technology - Giải pháp AI tiên phong",
-  description:
-    "Creatix Technology cung cấp các giải pháp AI sáng tạo như AI Video Editor, AI Portrait Creator, Magic Eraser và các dịch vụ tư vấn AI.",
-  // Add other metadata like icons, open graph, etc. here
-  // icons: { icon: '/favicon.ico' } // Example if you have a favicon
+  title: `${APP_CONFIG.company.name} - ${APP_CONFIG.company.description}`,
+  description: APP_CONFIG.company.longDescription,
+  icons: { icon: '/favicon.ico' },
 };
 
 export default function RootLayout({
@@ -27,7 +26,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="vi" className={`${inter.className} ${poppins.variable}`}>
-      <body>
+      <body
+        style={{
+          backgroundImage: 'url("/merge_bg.png")',
+          backgroundSize: "cover",
+          backgroundPosition: "top",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
         <Header />
         {children}
         <Footer />

@@ -17,9 +17,9 @@ const JOBS = [
     slug: "ios-developer-mid-senior",
   },
   {
-    title: "Cộng Tác Viên Mạng Xã Hội",
+    title: "Social Media Content Creator",
     location: "Hà Nội",
-    type: "Linh hoạt thời gian",
+    type: "Flexible",
     slug: "cong-tac-vien-mang-xa-hoi",
   },
 ];
@@ -32,32 +32,18 @@ export default function CareersPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-b from-[#f8fafc] to-white relative overflow-hidden">
-      <img
-        src="/hire_yellow_shadow_image.svg"
-        alt="creatix hiring shadow"
-        aria-hidden="true"
-        loading="lazy"
-        className="pointer-events-none select-none absolute left-[10rem] top-[1rem] w-[25vw] max-w-[700px] z-0"
-      />
-      <img
-        src="/hire_purple_shadow_image.svg"
-        alt="creatix hiring shadow"
-        aria-hidden="true"
-        loading="lazy"
-        className="pointer-events-none select-none absolute right-[-15vw] top-[-10vw] w-[40vw] max-w-[700px] z-0"
-      />
+    <div className="min-h-screen flex flex-col relative overflow-hidden">
       <main className="flex-1 flex flex-col items-center px-4 py-10">
-        <div className="max-w-3xl w-full flex flex-col items-center">
+        <div className="max-w-[90rem] w-full flex flex-col items-center">
           <h1 className="text-[36px] sm:text-[64px] font-extrabold text-center text-creatix-gray-900 mb-1 mt-16">
-            Gia nhập đội ngũ
+            Join the Creatix
           </h1>
-          <h2 className="text-[36px] sm:text-[64px] bg-gradient-primary bg-clip-text text-transparent font-extrabold mb-16 text-center">
+          <h2 className="text-[36px] sm:text-[64px] bg-gradient-to-r from-[#392F50] to-[#7344C8] bg-clip-text text-transparent font-extrabold mb-16 text-center">
             Creatix Technology
           </h2>
           <div className="w-full flex justify-center mb-10">
             <img
-              src="/hire_main_image.jpg"
+              src="/career_image.png"
               alt="Creatix Hiring"
               loading="lazy"
               style={{
@@ -67,14 +53,22 @@ export default function CareersPage() {
               }}
             />
           </div>
-          <section className="w-full max-w-[720px] mx-auto mt-16 mb-20">
-            <h3 className="text-[36px] sm:text-[48px] font-bold text-creatix-gray-900 text-center mb-3 leading-tight">
-              Các vị trí đang tuyển
-            </h3>
-            <p className="text-center text-base sm:text-[20px] text-gray-400 mb-16 font-normal">
-              “Khám phá cơ hội nghề nghiệp cùng môi trường công nghệ năng động.”
-            </p>
-            <div className="space-y-6 mb-10">
+          <section className="w-full max-w-[90rem] mx-auto mt-16 mb-20">
+            <div className="text-center mb-16 space-y-4 z-10 px-2 sm:px-64 flex justify-center flex-col items-center">
+              <div className="inline-flex items-center px-3 py-1 bg-[#635BFF1A] rounded-lg">
+                <span className="text-sm font-semibold text-creatix-primary tracking-wide">
+                  Recruitment
+                </span>
+              </div>
+              <p className="text-[36px] sm:text-[56px] font-extrabold bg-gradient-to-r from-[#392F50] to-[#7344C8] bg-clip-text text-transparent ">
+                Current positions
+              </p>
+              <p className="font-inter text-base sm:text-xl text-[#383838] font-medium opacity-80">
+                “Explore career opportunities in a dynamic technology
+                environment.”
+              </p>
+            </div>
+            <div className="space-y-6 mb-10 w-full sm:w-1/2 mx-auto">
               {JOBS.map((job) => (
                 <div
                   key={job.title}
@@ -86,7 +80,7 @@ export default function CareersPage() {
                       {job.title}
                     </div>
                     <div className="text-base text-gray-700">
-                      Địa điểm:{" "}
+                      Location:{" "}
                       <span className="text-[#008CFF]">{job.location}</span> |{" "}
                       <span className="text-[#008CFF]">{job.type}</span>
                     </div>
@@ -95,17 +89,16 @@ export default function CareersPage() {
                     onClick={() => handleJobClick(job.slug)}
                     className="mt-4 md:mt-0 text-[#6366F1] font-medium hover:underline whitespace-nowrap text-base"
                   >
-                    Tìm hiểu thêm
+                    Learn More
                   </button>
                 </div>
               ))}
             </div>
-            <div className="text-center text-gray-700 text-base font-bold">
-              Không tìm thấy vị trí phù hợp? Gửi CV của bạn cho chúng tôi{" "}
+            <div className="text-center text-gray-700 text-lg font-semibold">
+              Can't find a suitable position? Send us your CV {""}
               <Link href="#" className="text-[#6366F1] underline font-medium">
-                tại đây
+                here.
               </Link>
-              .
             </div>
           </section>
         </div>
