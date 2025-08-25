@@ -53,7 +53,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             </span>
           </div>
 
-          <p className="text-[16px] sm:text-[20px] text-[#060017] leading-[30px] font-normal opacity-80 tracking-[0.25px] font-inter">
+          <p className="text-[16px] text-[#383838] leading-[25px] font-normal opacity-80 tracking-[0.25px] font-inter">
             {product.description}
           </p>
         </div>
