@@ -101,10 +101,10 @@ export default function Career() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12 space-y-6">
-          <h2 className="text-[42px] sm:text-[48px] font-extrabold tracking-[3%] leading-[80px] font-inter bg-gradient-to-r from-[#392F50] to-[#7344C8] bg-clip-text text-transparent">
+          <h2 className="text-[42px] sm:text-[48px] font-extrabold tracking-[0.025px] leading-[80px] font-inter bg-gradient-to-r from-[#392F50] to-[#7344C8] bg-clip-text text-transparent">
             Career Opportunities
           </h2>
-          <p className="text-xl text-[#0C0C0C] font-normal opacity-80 max-w-3xl mx-auto leading-[30px] tracking-[5%] font-inter">
+          <p className="text-xl text-[#0C0C0C] font-normal opacity-80 max-w-3xl mx-auto leading-[30px] tracking-[1px] font-inter">
             We create the future with advanced AI solutions, delivering
             sustainable value to businesses and communities.
           </p>

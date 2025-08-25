@@ -17,20 +17,20 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
   return (
     <div
-      className={`bg-white rounded-3xl hover:shadow-lg shadow-sm transition-shadow duration-300 overflow-hidden flex flex-col h-full ${className}`}
+      className={`bg-white rounded-3xl hover:shadow-lg transition-shadow p-4 duration-300 overflow-hidden flex flex-col h-full ${className}`}
     >
       {/* Product Image */}
       <div className="relative">
         <img
           src={product.image}
           alt={product.title}
-          className="w-full h-72 rounded-3xl p-2 object-contain"
+          className="w-full h-72 rounded-3xl object-contain"
           loading="lazy"
         />
       </div>
 
       {/* Product Content */}
-      <div className="p-6 flex flex-col flex-grow">
+      <div className="py-6 flex flex-col flex-grow">
         {/* Product Badge & Title */}
         <div className="space-y-4 flex-grow">
           <div
@@ -47,13 +47,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({
               <div className="w-8 h-8 bg-transparent"></div>
             )}
             <span
-              className={`font-extrabold text-lg ${product.titleColor} font-inter tracking-[0.5%] leading-[100%]`}
+              className={`font-extrabold text-[20px] ${product.titleColor} font-inter tracking-[0.025px] leading-[100%]`}
             >
               {product.title}
             </span>
           </div>
 
-          <p className="text-base text-[#060017] leading-[30px] font-normal opacity-80 tracking-[5%] font-inter">
+          <p className="text-[16px] sm:text-[20px] text-[#060017] leading-[30px] font-normal opacity-80 tracking-[0.25px] font-inter">
             {product.description}
           </p>
         </div>

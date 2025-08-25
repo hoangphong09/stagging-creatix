@@ -158,11 +158,11 @@ export default function Hero() {
               </span>
             </div>
             <p
-              className={`text-[36px] sm:text-[48px] font-extrabold text-[#0C0C0C] tracking-[3%] leading-[80px] font-inter`}
+              className={`text-[36px] sm:text-[48px] font-extrabold text-[#0C0C0C] tracking-[0.025px] leading-[80px] font-inter`}
             >
               Feature Products
             </p>
-            <p className="font-inter text-base sm:text-xl text-[#383838] font-normal opacity-80 leading-[30px] tracking-[5%]">
+            <p className="font-inter text-[16px] sm:text-[20px] text-[#383838] font-medium opacity-80 leading-[30px] tracking-[0.25px]">
               "We carefully select the best products – combining practicality,
               great user experience, and simplicity in every action."
             </p>
@@ -186,12 +186,12 @@ export default function Hero() {
                   Our AI Services
                 </span>
               </div>
-              <h2 className="text-[36px] sm:text-[48px] font-extrabold text-[#0C0C0C] tracking-[3%] leading-[80px] font-inter">
+              <h2 className="text-[36px] sm:text-[48px] font-extrabold text-[#0C0C0C] tracking-[0.025px] leading-[80px] font-inter">
                 We provide AI services
               </h2>
             </div>
 
-            <p className="text-base font-inter font-normal text-[#383838] opacity-80 max-w-lg leading-[30px] tracking-[5%] sm:mt-10">
+            <p className="text-base font-inter font-normal text-[#383838] opacity-80 max-w-lg leading-[30px] tracking-[1px] sm:mt-10">
               Optimize performance with AI services, analytics, and modern
               application development.
             </p>

@@ -24,7 +24,7 @@ export default function CTA() {
         {/* CTA Content */}
         <div className="text-center mb-16 space-y-8 flex flex-col items-center justify-center gap-10">
           <div className="space-y-4 flex flex-col items-center justify-center gap-4">
-            <h2 className="text-[24px] font-extrabold text-[#0c0c0c] font-inter leading-[100%] tracking-[5%]">
+            <h2 className="text-[24px] font-extrabold text-[#0c0c0c] font-inter leading-[100%] tracking-[1px]">
               Our Partners
             </h2>
           </div>
@@ -44,10 +44,10 @@ export default function CTA() {
           </div>
 
           <div className="px-10 py-10 bg-gradient-to-r from-[#F1EBFF] to-[#EEF5FC] rounded-3xl max-w-full w-full mx-auto flex flex-col items-center justify-center gap-10">
-            <span className="font-extrabold bg-gradient-to-r from-[#392F50] to-[#7344C8] bg-clip-text text-transparent font-inter text-[48px] leading-[80px] tracking-[3%]">
+            <span className="font-extrabold bg-gradient-to-r from-[#392F50] to-[#7344C8] bg-clip-text text-transparent font-inter text-[48px] leading-[80px] tracking-[0.025px]">
               Ready to experience?
             </span>
-            <p className="text-[20px] font-inter text-[#383838] font-medium max-w-3xl mx-auto leading-[30px] tracking-[5%]">
+            <p className="text-[20px] font-inter text-[#383838] font-medium max-w-3xl mx-auto leading-[30px] tracking-[1px]">
               "Request a demo to explore how {APP_CONFIG.company.name} can help
               you."
             </p>
