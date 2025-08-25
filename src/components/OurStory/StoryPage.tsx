@@ -48,7 +48,7 @@ export default function StoryPage() {
       </div>
 
       {/* About Us Section */}
-      <div className="w-full max-w-7xl mx-auto grid md:grid-cols-2 gap-12 mt-20 items-center z-10">
+      <div className="w-full max-w-[85rem] mx-auto grid md:grid-cols-2 gap-12 mt-20 items-center z-10">
         <div>
           <div className="mb-2 bg-[#635BFF1A] px-3 py-3 flex justify-center max-w-32 rounded-[8px]">
             <span className="text-[14px] font-inter font-semibold text-[#635BFF] leading-[100%] tracking-[0.025px]">
@@ -81,7 +81,7 @@ export default function StoryPage() {
       </div>
 
       {/* Culture Section */}
-      <div className="w-full max-w-7xl mx-auto grid md:grid-cols-2 gap-12 mt-20 items-center z-10">
+      <div className="w-full max-w-[85rem] mx-auto grid md:grid-cols-2 gap-12 mt-20 items-center z-10">
         <div className="flex justify-center order-2 md:order-1">
           <div className="relative">
             <img

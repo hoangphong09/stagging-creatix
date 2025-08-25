@@ -15,7 +15,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
 
   return (
     <div
-      className={`bg-transparent rounded-2xl p-8 hover:shadow-lg hover:bg-white transition-shadow duration-300 space-y-6 group ${className}`}
+      className={`bg-transparent rounded-2xl py-8 transition-shadow duration-300 space-y-6 group ${className}`}
     >
       {/* Icon */}
       <div

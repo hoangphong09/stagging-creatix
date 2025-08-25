@@ -77,11 +77,11 @@ export default function Career() {
       </div>
 
       {/* Verify icon - flush right, vertically centered, responsive */}
-      <div className="hidden md:flex absolute -right-20 top-[75%] -translate-y-1/2 w-[220px] lg:w-[320px] xl:w-[447px] h-auto z-40">
+      <div className="hidden md:flex absolute -right-1 top-[80%] -translate-y-1/2 w-[220px] lg:w-[320px] xl:w-[320px] h-auto z-40">
         <img
           src="/home_carrer_right.png"
           alt="verify_icon"
-          className="w-[95%] h-auto object-contain rotate-[360deg]"
+          className="h-auto object-contain rotate-[360deg]"
           style={{ minWidth: 0 }}
           loading="lazy"
         />
@@ -98,13 +98,13 @@ export default function Career() {
         />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 max-w-[85rem] mx-auto px-4 sm:px-0 ">
         {/* Header */}
         <div className="text-center mb-12 space-y-6">
-          <h2 className="text-[42px] sm:text-[48px] font-extrabold tracking-[0.025px] leading-[80px] font-inter bg-gradient-to-r from-[#392F50] to-[#7344C8] bg-clip-text text-transparent">
+          <h2 className="text-[42px] sm:text-[48px] font-extrabold tracking-[3%] leading-[80px] font-inter bg-gradient-to-r from-[#392F50] to-[#7344C8] bg-clip-text text-transparent">
             Career Opportunities
           </h2>
-          <p className="text-xl text-[#0C0C0C] font-normal opacity-80 max-w-3xl mx-auto leading-[30px] tracking-[1px] font-inter">
+          <p className="text-xl text-[#0C0C0C] font-normal opacity-80 max-w-3xl mx-auto leading-[30px] tracking-[5%] font-inter">
             We create the future with advanced AI solutions, delivering
             sustainable value to businesses and communities.
           </p>
@@ -117,7 +117,7 @@ export default function Career() {
         </div>
 
         {/* Job Listings */}
-        <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-8 max-w-[85rem] mx-auto">
           {visibleJobs.map((job, index) => (
             <div
               key={job.title + index}

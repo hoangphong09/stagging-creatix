@@ -20,11 +20,11 @@ export default function CTA() {
 
   return (
     <section className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
         {/* CTA Content */}
         <div className="text-center mb-16 space-y-8 flex flex-col items-center justify-center gap-10">
           <div className="space-y-4 flex flex-col items-center justify-center gap-4">
-            <h2 className="text-[24px] font-extrabold text-[#0c0c0c] font-inter leading-[100%] tracking-[1px]">
+            <h2 className="text-[24px] font-extrabold text-[#0c0c0c] font-inter leading-[100%] tracking-[5%]">
               Our Partners
             </h2>
           </div>
@@ -36,7 +36,9 @@ export default function CTA() {
                   key={`partner-${index}`}
                   src={logo}
                   alt={`Partner ${index + 1}`}
-                  className="h-14 sm:h-16 w-auto object-contain opacity-100 hover:opacity-100 transition-opacity flex-shrink-0"
+                  className={`h-14 sm:h-16 w-auto object-contain opacity-100 hover:opacity-100 transition-opacity flex-shrink-0 ${
+                    index === 3 ? "sm:w-[14%] w-[25%]" : ""
+                  }`}
                   loading="lazy"
                 />
               ))}
@@ -44,10 +46,10 @@ export default function CTA() {
           </div>
 
           <div className="px-10 py-10 bg-gradient-to-r from-[#F1EBFF] to-[#EEF5FC] rounded-3xl max-w-full w-full mx-auto flex flex-col items-center justify-center gap-10">
-            <span className="font-extrabold bg-gradient-to-r from-[#392F50] to-[#7344C8] bg-clip-text text-transparent font-inter text-[48px] leading-[80px] tracking-[0.025px]">
+            <span className="font-extrabold bg-gradient-to-r from-[#392F50] to-[#7344C8] bg-clip-text text-transparent font-inter text-[48px] leading-[80px] tracking-[3%]">
               Ready to experience?
             </span>
-            <p className="text-[20px] font-inter text-[#383838] font-medium max-w-3xl mx-auto leading-[30px] tracking-[1px]">
+            <p className="text-[20px] font-inter text-[#383838] font-medium max-w-3xl mx-auto leading-[30px] tracking-[5%]">
               "Request a demo to explore how {APP_CONFIG.company.name} can help
               you."
             </p>

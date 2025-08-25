@@ -177,7 +177,7 @@ export default function Hero() {
         </div>
 
         {/* SERVICES SECTION */}
-        <div className="max-w-[85rem] mt-32 mx-auto px-4 sm:px-6 lg:px-8 mb-32">
+        <div className="max-w-[85rem] mt-32 mx-auto px-4 sm:px-6 lg:px-0 mb-32">
           {/* Header */}
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-16 gap-8">
             <div className="space-y-2">
@@ -186,12 +186,12 @@ export default function Hero() {
                   Our AI Services
                 </span>
               </div>
-              <h2 className="text-[36px] sm:text-[48px] font-extrabold text-[#0C0C0C] tracking-[0.025px] leading-[80px] font-inter">
+              <h2 className="text-[36px] sm:text-[48px] font-extrabold text-[#0C0C0C] tracking-[3%] leading-[80px] font-inter">
                 We provide AI services
               </h2>
             </div>
 
-            <p className="text-base font-inter font-normal text-[#383838] opacity-80 max-w-lg leading-[30px] tracking-[1px] sm:mt-10">
+            <p className="text-base font-inter font-normal text-[#383838] opacity-80 max-w-lg leading-[30px] tracking-[5%] sm:mt-10">
               Optimize performance with AI services, analytics, and modern
               application development.
             </p>
