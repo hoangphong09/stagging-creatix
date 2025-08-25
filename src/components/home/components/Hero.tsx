@@ -10,8 +10,8 @@ import { COMMON_STYLES } from "@/constants";
 // Slide data: each slide has its own image and text content
 const PHONE_SLIDES = [
   {
-    id: 1,
-    img: "/home_hero_slider_1.png",
+    id: 2,
+    img: "/home_hero_slider_2.png",
     badgeTop: (
       <>
         Turning Precious Life Moments
@@ -28,8 +28,8 @@ const PHONE_SLIDES = [
     ),
   },
   {
-    id: 2,
-    img: "/home_hero_slider_2.png",
+    id: 1,
+    img: "/home_hero_slider_1.png",
     badgeTop: (
       <>
         Eliminate Distractions. Turn your <br />
@@ -63,9 +63,7 @@ const StepIcon: React.FC<{
       <img
         src={stepIndex === 0 ? "/slider_1.png" : "/slider_2.png"}
         alt="Eraser Icon"
-        className={`w-full h-full object-contain ${
-          active ? "" : "opacity-30"
-        }`}
+        className={`w-full h-full object-contain ${active ? "" : "opacity-30"}`}
         draggable={false}
         loading="lazy"
       />
@@ -112,22 +110,24 @@ export default function Hero() {
       style={{ minHeight: "837px" }}
     >
       {/* Main Content */}
-      <div className="relative z-30 max-w-[90rem] mx-auto pt-2 px-4 sm:px-6 sm:pt-24">
+      <div className="relative z-30 mx-auto pt-2 px-4 sm:px-6 sm:pt-24 xl:max-w-[85rem]">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center min-h-[600px]">
           {/* Left */}
           <div className="space-y-8">
             <div className="space-y-6">
-              <h1 className="text-[56px] sm:text-[64px] font-extrabold leading-tight">
-                <span className={`font-extrabold ${COMMON_STYLES.gradients.primary} bg-clip-text text-transparent font-vietnam-pro`}>
+              <h1 className="text-[56px] sm:text-[60px] font-extrabold leading-[65px]">
+                <span
+                  className={`font-extrabold ${COMMON_STYLES.gradients.primary} bg-clip-text text-transparent font-vietnam-pro`}
+                >
                   Creatix Technology
                 </span>
                 <br />
-                <span className="text-creatix-gray-900 font-vietnam-pro text-[32px] sm:text-[42px]">
+                <span className="text-creatix-gray-900 font-inter text-[32px] sm:text-[38px] leading-[65px]">
                   Pioneering in the field
                 </span>
               </h1>
 
-              <p className="text-base sm:text-xl text-creatix-gray-900 leading-relaxed">
+              <p className="text-base sm:text-lg font-inter text-[#060017] leading-[35px] font-normal">
                 <span className="font-bold">Creatix Technology </span>
                 specializes in providing modern technology services and
                 solutions, helping to simplify processes and improve business
@@ -137,7 +137,7 @@ export default function Hero() {
 
             {/* Download Buttons */}
             <div className="space-y-6">
-              <p className="text-xs sm:text-lg font-semibold text-creatix-gray-900 uppercase tracking-wide">
+              <p className="text-base sm:text-base font-bold text-[#0C0C0C] leading-[25px] font-inter uppercase tracking-wide">
                 Download now to experience our services
               </p>
               <div className="flex flex-row gap-6">
@@ -149,18 +149,20 @@ export default function Hero() {
         </div>
 
         {/* PRODUCT SECTION */}
-        <div className="max-w-[100rem] mx-auto sm:mt-32 px-4 sm:px-6 lg:px-8 pt-20 py-24 shadow-xl rounded-3xl overflow-hidden relative z-10 bg-white">
+        <div className="max-w-[100rem] mx-auto sm:mt-32 px-8 sm:px-20 py-20 shadow-sm rounded-3xl overflow-hidden relative z-10 bg-white">
           {/* Header */}
           <div className="text-center mb-16 space-y-4 z-10 px-2 sm:px-64 flex justify-center flex-col items-center">
             <div className="inline-flex items-center px-3 py-1 bg-[#635BFF1A] rounded-lg">
-              <span className="text-sm font-semibold text-creatix-primary tracking-wide">
+              <span className="text-sm font-inter font-semibold text-[#635BFF] tracking-[0.5px] leading-[25px]">
                 Outstanding product
               </span>
             </div>
-            <p className={`text-[36px] sm:text-[56px] font-extrabold ${COMMON_STYLES.gradients.primary} bg-clip-text text-transparent`}>
+            <p
+              className={`text-[36px] sm:text-[48px] font-extrabold text-[#0C0C0C] tracking-[3%] leading-[80px] font-inter`}
+            >
               Feature Products
             </p>
-            <p className="font-inter text-base sm:text-xl text-[#383838] font-medium">
+            <p className="font-inter text-base sm:text-xl text-[#383838] font-normal opacity-80 leading-[30px] tracking-[5%]">
               "We carefully select the best products – combining practicality,
               great user experience, and simplicity in every action."
             </p>
@@ -175,21 +177,21 @@ export default function Hero() {
         </div>
 
         {/* SERVICES SECTION */}
-        <div className="max-w-[90rem] mt-32 mx-auto px-4 sm:px-6 lg:px-8 mb-32">
+        <div className="max-w-[85rem] mt-32 mx-auto px-4 sm:px-6 lg:px-8 mb-32">
           {/* Header */}
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-16 gap-8">
             <div className="space-y-2">
-              <div className="inline-flex items-center px-3 py-1 bg-[#635BFF1A] rounded-lg mb-6 sm:mb-2">
-                <span className="text-xs sm:text-sm font-inter font-semibold text-[#635BFF] tracking-wide">
+              <div className="inline-flex items-center px-3 py-1 bg-[#635BFF1A] rounded-lg mb-2">
+                <span className="text-sm font-inter font-semibold text-[#635BFF] tracking-[0.5px] leading-[25px]">
                   Our AI Services
                 </span>
               </div>
-              <h2 className="text-[28px] sm:text-[48px] font-extrabold text-[#0C0C0C] leading-tight">
+              <h2 className="text-[36px] sm:text-[48px] font-extrabold text-[#0C0C0C] tracking-[3%] leading-[80px] font-inter">
                 We provide AI services
               </h2>
             </div>
 
-            <p className="text-base sm:text-xl font-inter font-medium text-[#383838] opacity-80 max-w-lg leading-relaxed">
+            <p className="text-base font-inter font-normal text-[#383838] opacity-80 max-w-lg leading-[30px] tracking-[5%] sm:mt-10">
               Optimize performance with AI services, analytics, and modern
               application development.
             </p>
@@ -221,7 +223,7 @@ export default function Hero() {
               style={{ display: "block" }}
               loading="lazy"
             />
-            
+
             {/* Badge - Top Right */}
             <div
               className={
@@ -233,14 +235,14 @@ export default function Hero() {
               <p
                 className={
                   currentSlide.id === 2
-                    ? "text-sm font-medium bg-gradient-to-b from-purple-600 to-blue-600 bg-clip-text text-transparent leading-6"
-                    : "text-sm font-medium bg-gradient-red bg-clip-text text-transparent leading-6"
+                    ? "text-sm font-medium bg-gradient-to-b from-[#7839FF] to-[#5199E1] bg-clip-text text-transparent leading-6"
+                    : "text-sm font-medium bg-gradient-to-b from-[#FF3838] to-[#FF3368] bg-clip-text text-transparent leading-6"
                 }
               >
                 {currentSlide.badgeTop}
               </p>
             </div>
-            
+
             {/* Badge - Bottom Left */}
             <div
               className={
@@ -252,7 +254,7 @@ export default function Hero() {
               <p
                 className={
                   currentSlide.id === 2
-                    ? "text-sm font-medium bg-gradient-to-b from-purple-600 to-blue-600 bg-clip-text text-transparent leading-6"
+                    ? "text-sm font-medium bg-gradient-to-b from-[#7839FF] to-[#5199E1] bg-clip-text text-transparent leading-6"
                     : "text-sm font-medium bg-gradient-red bg-clip-text text-transparent leading-6"
                 }
               >

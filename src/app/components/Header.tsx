@@ -120,7 +120,7 @@ const Header: React.FC = () => {
   }, [isLanguageDropdownOpen]);
 
   const handleLanguageChange = useCallback(
-    (lang: 'en' | 'vi') => {
+    (lang: "en" | "vi") => {
       changeLanguage(lang);
       setIsLanguageDropdownOpen(false);
     },
@@ -147,7 +147,7 @@ const Header: React.FC = () => {
         </div>
       )}
 
-      <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
@@ -200,7 +200,7 @@ const Header: React.FC = () => {
           {/* Right Side - Request Demo Button and Language Dropdown */}
           <div className="items-center gap-4 hidden sm:flex">
             <Button
-              className="text-[16px] font-bold font-inter bg-gradient-to-r from-[#3C39FF] to-[#5199E1] bg-clip-text text-transparent border border-[#3C39FF] rounded-2xl px-8 py-2 h-10 hover:bg-[#3C39FF] transition-all duration-200 shadow-none"
+              className="text-[16px] font-bold font-inter bg-gradient-to-r from-[#3C39FF] to-[#5199E1] bg-clip-text text-transparent border border-[#3C39FF] rounded-xl px-8 py-2 h-10 hover:bg-[#3C39FF] transition-all duration-200 shadow-none"
               onClick={handleRequestDemo}
             >
               Request a Demo
@@ -210,7 +210,7 @@ const Header: React.FC = () => {
             <div className="relative">
               <button
                 onClick={toggleLanguageDropdown}
-                className="flex items-center gap-2 px-3 py-2 rounded-2xl border border-[#9B9B9B] hover:border-[#3C39FF] transition-colors h-10"
+                className="flex items-center gap-2 px-3 py-2 rounded-xl border border-[#9B9B9B] hover:border-[#3C39FF] transition-colors h-10"
               >
                 <span className="text-sm font-medium">
                   {currentLanguage.toUpperCase()}
@@ -218,7 +218,7 @@ const Header: React.FC = () => {
                 <ChevronDown className="w-4 h-4" />
               </button>
               {isLanguageDropdownOpen && (
-                <div className="absolute right-0 top-full mt-2 w-32 bg-white border border-gray-200 rounded-lg shadow-lg py-2 z-50">
+                <div className="absolute right-0 top-full mt-2 w-32 bg-white border border-gray-200 rounded-xl shadow-lg py-2 z-50">
                   <button
                     onClick={() => handleLanguageChange("en")}
                     className="w-full px-4 py-2 text-left text-sm hover:bg-gray-50 transition-colors"
@@ -275,7 +275,7 @@ const Header: React.FC = () => {
               </span>
             </Link>
             <button onClick={toggleMobileMenu}>
-              <X className="w-6 w-6" />
+              <X className="w-6 h-6" />
             </button>
           </div>
 
@@ -327,13 +327,13 @@ const Header: React.FC = () => {
 
               {/* Language Indicator */}
               {currentLanguage === "vi" && (
-                <div className="absolute -top-2 -right-2 bg-green-500 text-white text-xs px-2 py-1 rounded-full">
+                <div className="absolute -top-2 -right-2 bg-green-500 text-white text-xs px-2 py-1 rounded-xl">
                   VI
                 </div>
               )}
 
               {isLanguageDropdownOpen && (
-                <div className="absolute right-0 top-full mt-2 w-32 bg-white border border-gray-200 rounded-lg shadow-lg py-2 z-50">
+                <div className="absolute right-0 top-full mt-2 w-32 bg-white border border-gray-200 rounded-xl shadow-lg py-2 z-50">
                   <button
                     onClick={() => handleLanguageChange("en")}
                     className="w-full px-4 py-2 text-left text-sm hover:bg-gray-50 transition-colors"

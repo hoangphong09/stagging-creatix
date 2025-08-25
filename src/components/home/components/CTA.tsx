@@ -24,12 +24,12 @@ export default function CTA() {
         {/* CTA Content */}
         <div className="text-center mb-16 space-y-8 flex flex-col items-center justify-center gap-10">
           <div className="space-y-4 flex flex-col items-center justify-center gap-4">
-            <h2 className="text-3xl lg:text-5xl font-extrabold text-creatix-gray-900">
+            <h2 className="text-[24px] font-extrabold text-[#0c0c0c] font-inter leading-[100%] tracking-[5%]">
               Our Partners
             </h2>
           </div>
-          
-          <div className="relative overflow-hidden">
+
+          <div className="relative overflow-hidden pb-20">
             <div className="flex flex-wrap justify-center items-center gap-10 lg:gap-20 px-2">
               {partners.map((logo, index) => (
                 <img
@@ -44,14 +44,15 @@ export default function CTA() {
           </div>
 
           <div className="px-10 py-10 bg-gradient-to-r from-[#F1EBFF] to-[#EEF5FC] rounded-3xl max-w-full w-full mx-auto flex flex-col items-center justify-center gap-10">
-            <span className="font-extrabold bg-gradient-to-r from-[#392F50] to-[#7344C8] bg-clip-text text-transparent font-vietnam-pro text-[48px]">
+            <span className="font-extrabold bg-gradient-to-r from-[#392F50] to-[#7344C8] bg-clip-text text-transparent font-inter text-[48px] leading-[80px] tracking-[3%]">
               Ready to experience?
             </span>
-            <p className="text-xl text-[#0C0C0C] font-medium opacity-90 max-w-3xl mx-auto leading-relaxed">
-              "Request a demo to explore how {APP_CONFIG.company.name} can help you."
+            <p className="text-[20px] font-inter text-[#383838] font-medium max-w-3xl mx-auto leading-[30px] tracking-[5%]">
+              "Request a demo to explore how {APP_CONFIG.company.name} can help
+              you."
             </p>
             <Button
-              className="bg-creatix-primary hover:bg-creatix-primary/90 text-white font-bold px-8 py-3 h-12 w-auto rounded-xl"
+              className="bg-[#635BFF] hover:bg-[#635BFF]/90 text-white font-bold px-8 py-3 h-12 w-auto rounded-xl"
               onClick={handleContactNow}
             >
               Contact Now

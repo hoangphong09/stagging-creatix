@@ -70,14 +70,14 @@ export default function BlogPage() {
         <section className="w-full max-w-6xl mx-auto">
           <div className="flex flex-col items-center mb-[8rem] mt-[8rem]">
             <div className="flex items-center gap-3 mb-8 flex-col sm:flex-row">
-              <span className="bg-gradient-to-br from-[#571CEC] to-[#A96CF9] text-white text-[64px] font-extrabold px-6 py-2 rounded-xl shadow-lg">
+              <span className="bg-gradient-to-r from-[#571CEC] to-[#A96CF9] text-white text-[64px] font-extrabold px-6 py-2 rounded-xl shadow-lg">
                 Blog
               </span>
               <span className="text-[64px] font-extrabold text-creatix-gray-900">
                 technology
               </span>
             </div>
-            <p className="text-[20px] text-gray-400 text-center max-w-2xl">
+            <p className="font-inter text-[20px] text-[#383838] font-normal leading-[30px] tracking-[0.025px] text-center max-w-2xl">
               Explore the latest articles on AI, technology and innovation.
             </p>
           </div>
@@ -220,14 +220,14 @@ export default function BlogPage() {
               <Link
                 key={`other-post-${post.title}-${idx}`}
                 href={`/blog/${post.slug}`}
-                className="bg-transparent rounded-2xl shadow-md overflow-hidden flex flex-col transition hover:shadow-xl"
+                className="bg-transparent rounded-2xl overflow-hidden flex flex-col transition hover:shadow-xl"
               >
                 <div className="relative w-full h-[250px] overflow-hidden">
                   <img
                     src={post.image}
                     alt={post.title}
                     loading="lazy"
-                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                    className="w-[500px] h-[250px] object-cover transition-transform duration-300 hover:scale-105"
                   />
                   {post.tag && (
                     <span className="absolute top-3 left-3 bg-[#8B5CF6] text-white text-xs font-semibold px-3 py-1 rounded-lg shadow">
@@ -235,8 +235,8 @@ export default function BlogPage() {
                     </span>
                   )}
                 </div>
-                <div className="p-5 flex-1 flex flex-col">
-                  <h3 className="font-bold text-2xl text-creatix-gray-900 mb-2 flex flex-row items-center gap-1">
+                <div className="py-5 flex-1 flex flex-col">
+                  <h3 className="font-bold font-inter text-[24px] text-[#0C0C0C] leading-[35px] tracking-[0.0025px] mb-2 flex flex-row items-center gap-1">
                     {post.title}
                     {post.tag && (
                       <span className="bg-clip-text bg-gradient-to-br from-[#7E39EA] to-[#D92F7F] text-transparent">
@@ -244,10 +244,10 @@ export default function BlogPage() {
                       </span>
                     )}
                   </h3>
-                  <p className="text-gray-600 text-base mb-4 flex-1">
+                  <p className="text-[#383838] font-inter text-[16px] font-normal leading-[25px] tracking-[0.025px] mb-4 flex-1">
                     {post.summary}
                   </p>
-                  <span className="text-[#6366F1] font-medium hover:underline text-base mt-auto">
+                  <span className="text-[#635BFF] font-semibold text-[14px] leading-[100%] tracking-[0.025px] hover:underline mt-auto">
                     Read more →
                   </span>
                 </div>

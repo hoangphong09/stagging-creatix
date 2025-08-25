@@ -1,30 +1,30 @@
-import React from 'react';
-import { ArrowRight } from 'lucide-react';
-import { Product } from '@/constants/product';
+import React from "react";
+import { ArrowRight } from "lucide-react";
+import { Product } from "@/constants/product";
 
 interface ProductCardProps {
   product: Product;
   className?: string;
 }
 
-export const ProductCard: React.FC<ProductCardProps> = ({ 
-  product, 
-  className = '' 
+export const ProductCard: React.FC<ProductCardProps> = ({
+  product,
+  className = "",
 }) => {
   const handleLearnMore = () => {
-    window.open(product.link, '_blank');
+    window.open(product.link, "_blank");
   };
 
   return (
     <div
-      className={`bg-white rounded-3xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col h-full ${className}`}
+      className={`bg-white rounded-3xl hover:shadow-lg shadow-sm transition-shadow duration-300 overflow-hidden flex flex-col h-full ${className}`}
     >
       {/* Product Image */}
       <div className="relative">
         <img
           src={product.image}
           alt={product.title}
-          className="w-full h-72 object-cover rounded-3xl p-2"
+          className="w-full h-72 rounded-3xl p-2 object-contain"
           loading="lazy"
         />
       </div>
@@ -36,22 +36,24 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           <div
             className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl ${product.badgeColor}`}
           >
-            {product.logo && (
+            {product.logo ? (
               <img
                 src={product.logo}
                 alt="feature icon"
                 className="w-8 h-8"
                 loading="lazy"
               />
+            ) : (
+              <div className="w-8 h-8 bg-transparent"></div>
             )}
             <span
-              className={`font-bold text-lg ${product.titleColor}`}
+              className={`font-extrabold text-lg ${product.titleColor} font-inter tracking-[0.5%] leading-[100%]`}
             >
               {product.title}
             </span>
           </div>
 
-          <p className="text-base text-creatix-gray-800 leading-relaxed">
+          <p className="text-base text-[#060017] leading-[30px] font-normal opacity-80 tracking-[5%] font-inter">
             {product.description}
           </p>
         </div>
@@ -63,7 +65,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           role="button"
           tabIndex={0}
           onKeyDown={(e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
+            if (e.key === "Enter" || e.key === " ") {
               e.preventDefault();
               handleLearnMore();
             }

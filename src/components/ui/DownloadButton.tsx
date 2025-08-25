@@ -63,8 +63,8 @@ export const DownloadButton: React.FC<DownloadButtonProps> = ({
         loading="lazy"
       />
       <div className={textColor}>
-        <div className="text-sm font-semibold">{text.top}</div>
-        <div className="text-lg font-bold">{text.bottom}</div>
+        <div className="text-sm font-semibold font-inter leading-tight">{text.top}</div>
+        <div className="text-lg font-semibold font-inter leading-[25px]">{text.bottom}</div>
       </div>
     </div>
   );

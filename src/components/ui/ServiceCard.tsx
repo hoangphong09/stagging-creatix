@@ -1,31 +1,28 @@
-import React from 'react';
-import { ArrowRight } from 'lucide-react';
-import { Service } from '@/constants/service';
+import React from "react";
+import { ArrowRight } from "lucide-react";
+import { Service } from "@/constants/service";
 
 interface ServiceCardProps {
   service: Service;
   className?: string;
 }
 
-export const ServiceCard: React.FC<ServiceCardProps> = ({ 
-  service, 
-  className = '' 
+export const ServiceCard: React.FC<ServiceCardProps> = ({
+  service,
+  className = "",
 }) => {
   const IconComponent = service.icon;
 
   return (
     <div
-      className={`bg-white rounded-2xl p-8 shadow-lg transition-shadow duration-300 space-y-6 group ${className}`}
+      className={`bg-transparent rounded-2xl p-8 hover:shadow-lg hover:bg-white transition-shadow duration-300 space-y-6 group ${className}`}
     >
       {/* Icon */}
       <div
         className="w-15 h-15 bg-creatix-primary rounded-xl flex items-center justify-center font-thin"
-        style={{ width: '60px', height: '60px' }}
+        style={{ width: "60px", height: "60px" }}
       >
-        <IconComponent
-          className="w-10 h-10 text-white"
-          strokeWidth={2}
-        />
+        <IconComponent className="w-10 h-10 text-white" strokeWidth={2} />
       </div>
 
       {/* Content */}

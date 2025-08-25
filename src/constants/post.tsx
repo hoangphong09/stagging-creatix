@@ -44,7 +44,7 @@ export const SLIDER_POSTS = [
       slug: "5-cong-cu-ai-cho-nha-thiet-ke",
     },
     {
-      title: "How to Use Magic Eraser",
+      title: "How to Use ",
       summary: "How to use Magic Eraser to edit images super fast.",
       image: "/blog_post_2.jpg",
       tag: "Magic Eraser",

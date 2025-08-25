@@ -24,39 +24,43 @@ export default function StoryPage() {
         alt=""
         aria-hidden="true"
         loading="lazy"
-        className="hidden sm:block pointer-events-none select-none absolute right-0 top-[45vw] w-[21vw] max-w-[500px] z-20"
+        className="hidden sm:block pointer-events-none select-none absolute right-0 top-[60vw] w-[21vw] max-w-[500px] z-20"
       />
 
       {/* Main Title */}
-      <div className="w-full max-w-[90rem] mx-auto text-center mt-32 mb-8 z-10 flex flex-col items-center justify-center gap-4">
-        <h1 className="text-[62px] sm:text-[70px] font-extrabold text-creatix-gray-900 mb-2 font-vietnam-pro">
+      <div className="w-full max-w-[85rem] mx-auto text-center mt-32 mb-8 z-10 flex flex-col items-center justify-center gap-4">
+        <h1 className="text-[35px] sm:text-[70px] font-extrabold text-[#0C0C0C] leading-[100%] tracking-[0.025px] mb-2 font-vietnam-pro">
           “ We are Creatix ”
         </h1>
-        <h2 className="text-[62px] sm:text-[64px] font-extrabold bg-gradient-to-r from-[#392F50] to-[#7344C8] bg-clip-text text-transparent mb-4 font-vietnam-pro">
+        <h2 className="text-[32px] sm:text-[70px] font-extrabold bg-gradient-to-r from-[#392F50] to-[#7344C8] bg-clip-text text-transparent tracking-[0.25px] mb-2 font-vietnam-pro">
           Where technology meets creativity.
         </h2>
-        <p className="text-[20px] text-[#383838] font-normal mb-6 w-2/3">
+        <p className="font-inter text-[16px] sm:text-[20px] text-[#383838] font-normal leading-[35px] tracking-[0.025px] mb-6 max-w-[64rem]">
           "Every project starts with understanding—of users, needs, and the
           limits to be broken through flexible technology and creative
           thinking."
         </p>
-        <button className="bg-gradient-primary text-white font-semibold px-6 py-3 rounded-xl shadow hover:opacity-85 transition">
-          Discover now!
+        <button className="bg-gradient-to-r from-[#8D4AF7] to-[#6C53FE] px-8 py-3 rounded-xl shadow hover:opacity-85 transition">
+          <span className="text-[18px] font-semibold text-white leading-[100%] tracking-[0.0025px]">
+            Discover now!
+          </span>
         </button>
       </div>
 
       {/* About Us Section */}
       <div className="w-full max-w-7xl mx-auto grid md:grid-cols-2 gap-12 mt-20 items-center z-10">
         <div>
-          <div className="text-[14px] font-inter text-[#635BFF] font-semibold mb-2 bg-[#635BFF0D] px-2 py-3 flex justify-center w-36 rounded-full">
-            Who are we?
+          <div className="mb-2 bg-[#635BFF1A] px-3 py-3 flex justify-center max-w-32 rounded-[8px]">
+            <span className="text-[14px] font-inter font-semibold text-[#635BFF] leading-[100%] tracking-[0.025px]">
+              Who We Are
+            </span>
           </div>
-          <h3 className="text-[48px] font-extrabold bg-gradient-to-r from-[#392F50] to-[#7344C8] bg-clip-text text-transparent mb-4">
+          <h3 className="text-[28px] sm:text-[48px] font-extrabold bg-gradient-to-r from-[#392F50] to-[#7344C8] bg-clip-text text-transparent mb-4 font-inter leading-[80px] tracking-[0.025px]">
             About Us
           </h3>
-          <p className="text-[18px] text-[#0C0C0C] mb-2 font-inter">
+          <p className="text-[18px] text-[#0C0C0C] mb-2 font-inter font-normal leading-[35px] tracking-[1px]">
             <b>
-              <i>" </i>Creatix Technology
+              <i>"</i>Creatix Technology
             </b>{" "}
             is a technology company leading in the field of Artificial
             Intelligence (AI), specializing in providing creative AI products
@@ -94,14 +98,16 @@ export default function StoryPage() {
           </div>
         </div>
         <div className="order-1 md:order-2">
-          <div className="text-[14px] text-[#635BFF] font-semibold mb-2 bg-[#635BFF0D] px-2 py-3 flex justify-center w-52 rounded-full">
-            Culture in the company
+          <div className="mb-2 bg-[#635BFF1A] px-3 py-3 flex justify-center w-52 rounded-[8px]">
+            <span className="text-[14px] font-inter font-semibold text-[#635BFF] leading-[100%] tracking-[0.025px]">
+              Culture in the company
+            </span>
           </div>
-          <h3 className="text-[48px] font-extrabold bg-gradient-to-r from-[#392F50] to-[#7344C8] bg-clip-text text-transparent mb-4">
+          <h3 className="text-[28px] sm:text-[48px] font-extrabold bg-gradient-to-r from-[#392F50] to-[#7344C8] bg-clip-text text-transparent mb-4 font-inter leading-[80px] tracking-[0.025px]">
             Culture of Creatix
           </h3>
-          <p className="text-[18px] text-[#0C0C0C] mb-2">
-            <i>" </i>At <b>Creatix</b>, we honor creativity, innovation, and
+          <p className="text-[16px] sm:text-[18px] text-[#0C0C0C] mb-2 font-inter font-normal leading-[35px] tracking-[1px]">
+            <i>"</i>At <b>Creatix</b>, we honor creativity, innovation, and
             collaboration. We build a dynamic work environment where every idea
             is heard and every member can develop.<i>"</i>
           </p>
