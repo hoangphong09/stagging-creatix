@@ -19,7 +19,7 @@ const Footer: React.FC = () => {
         loading="lazy"
       />
 
-      <div className="relative z-10 max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="relative z-10 max-w-[82rem] mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid lg:grid-cols-2 gap-12 mb-16">
           {/* Quick Links */}
           <div className="space-y-6">

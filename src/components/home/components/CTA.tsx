@@ -20,7 +20,7 @@ export default function CTA() {
 
   return (
     <section className="py-20 bg-white">
-      <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[82rem] mx-auto px-4 sm:px-0">
         {/* CTA Content */}
         <div className="text-center mb-16 space-y-8 flex flex-col items-center justify-center gap-10">
           <div className="space-y-4 flex flex-col items-center justify-center gap-4">

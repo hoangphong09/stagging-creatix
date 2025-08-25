@@ -110,7 +110,7 @@ export default function Hero() {
       style={{ minHeight: "837px" }}
     >
       {/* Main Content */}
-      <div className="relative z-30 mx-auto pt-2 px-4 sm:px-6 sm:pt-24 xl:max-w-[85rem]">
+      <div className="relative z-30 mx-auto pt-2 px-4 sm:px-6 sm:pt-24 xl:max-w-[82rem]">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center min-h-[600px]">
           {/* Left */}
           <div className="space-y-8">
@@ -177,7 +177,7 @@ export default function Hero() {
         </div>
 
         {/* SERVICES SECTION */}
-        <div className="max-w-[85rem] mt-32 mx-auto px-4 sm:px-6 lg:px-0 mb-32">
+        <div className="max-w-[82rem] mt-32 mx-auto px-4 sm:px-6 lg:px-0 mb-20">
           {/* Header */}
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-16 gap-8">
             <div className="space-y-2">
