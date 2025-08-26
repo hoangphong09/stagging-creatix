@@ -1,3 +1,4 @@
+
 import React from "react";
 import { ArrowRight } from "lucide-react";
 import { Service } from "@/constants/service";
@@ -7,11 +8,11 @@ interface ServiceCardProps {
   className?: string;
 }
 
-export const ServiceCard: React.FC<ServiceCardProps> = ({
+export const ServiceCard: React.FC<ServiceCardProps> = React.memo(({
   service,
   className = "",
 }) => {
-  const IconComponent = service.icon;
+  const IconComponent = React.useMemo(() => service.icon, [service.icon]);
 
   return (
     <div
@@ -44,4 +45,4 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
       </div>
     </div>
   );
-};
+});

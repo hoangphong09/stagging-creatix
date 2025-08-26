@@ -23,7 +23,7 @@ export function useScrollPosition() {
   return scrollPosition;
 }
 
-export function useScrollThreshold(threshold: number) {
+export function useScrollThreshold(threshold: number): boolean {
   const [isAboveThreshold, setIsAboveThreshold] = useState(false);
   const { y } = useScrollPosition();
 

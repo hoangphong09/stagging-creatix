@@ -98,7 +98,7 @@ export default function Career() {
         />
       </div>
 
-      <div className="relative z-10 max-w-[82rem] mx-auto px-4 sm:px-0 ">
+              <div className="relative z-10 max-w-full mx-auto px-4 sm:px-[120px] lg:px-[120px] xl:px-[120px] 2xl:px-[250px] ">
         {/* Header */}
         <div className="text-center mb-12 space-y-6">
           <h2 className="text-[42px] sm:text-[48px] font-extrabold tracking-[3%] leading-[80px] font-inter bg-gradient-to-r from-[#392F50] to-[#7344C8] bg-clip-text text-transparent">
@@ -117,7 +117,7 @@ export default function Career() {
         </div>
 
         {/* Job Listings */}
-        <div className="grid lg:grid-cols-2 gap-8 max-w-[82rem] mx-auto">
+        <div className="grid lg:grid-cols-2 gap-8 max-w-full mx-auto">
           {visibleJobs.map((job, index) => (
             <div
               key={job.title + index}

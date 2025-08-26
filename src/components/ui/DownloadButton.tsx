@@ -1,18 +1,28 @@
+
 import React from 'react';
 import { APP_CONFIG } from '@/constants';
 
+type Platform = 'google-play' | 'app-store';
+
 interface DownloadButtonProps {
-  platform: 'google-play' | 'app-store';
+  platform: Platform;
   className?: string;
 }
 
-export const DownloadButton: React.FC<DownloadButtonProps> = ({ 
+export const DownloadButton: React.FC<DownloadButtonProps> = React.memo(({ 
   platform, 
   className = '' 
 }) => {
 
   
-  const config = {
+  const config: Record<Platform, {
+    icon: string;
+    alt: string;
+    link: string;
+    text: { top: string; bottom: string };
+    bgColor: string;
+    textColor: string;
+  }> = {
     'google-play': {
       icon: '/chplay.png',
       alt: 'Google Play',
@@ -39,22 +49,15 @@ export const DownloadButton: React.FC<DownloadButtonProps> = ({
 
   const { icon, alt, link, text, bgColor, textColor } = config[platform];
 
-  const handleClick = () => {
+  const handleClick = React.useCallback(() => {
     window.open(link, '_blank');
-  };
+  }, [link]);
 
   return (
     <div
       className={`flex items-center gap-3 ${bgColor} shadow-2xl px-4 py-3 rounded-xl hover:opacity-90 cursor-pointer transition-opacity ${className}`}
       onClick={handleClick}
-      role="button"
-      tabIndex={0}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          handleClick();
-        }
-      }}
+      aria-label={`Download from ${alt}`}
     >
       <img
         src={icon}
@@ -68,4 +71,4 @@ export const DownloadButton: React.FC<DownloadButtonProps> = ({
       </div>
     </div>
   );
-};
+});

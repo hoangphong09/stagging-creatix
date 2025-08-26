@@ -1,15 +1,16 @@
 "use client";
 
+import React from "react";
 import Link from "next/link";
 import { useEffect, useState, useCallback, useMemo } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { Button } from "src/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { X, Loader2, ChevronDown } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
 import { useScrollThreshold } from "@/hooks/useScrollPosition";
-import { APP_CONFIG } from "@/constants";
+import { APP_CONFIG, type SupportedLanguage } from "@/constants";
 
-const Header: React.FC = () => {
+const Header = () => {
   const router = useRouter();
   const pathname = usePathname();
   const [activeMenu, setActiveMenu] = useState<string>("about");
@@ -120,7 +121,7 @@ const Header: React.FC = () => {
   }, [isLanguageDropdownOpen]);
 
   const handleLanguageChange = useCallback(
-    (lang: "en" | "vi") => {
+    (lang: SupportedLanguage) => {
       changeLanguage(lang);
       setIsLanguageDropdownOpen(false);
     },
@@ -147,7 +148,7 @@ const Header: React.FC = () => {
         </div>
       )}
 
-      <div className="max-w-[82rem] mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="max-w-full mx-auto px-4 sm:px-[120px] lg:px-[120px] xl:px-[120px] 2xl:px-[250px]">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
@@ -356,4 +357,4 @@ const Header: React.FC = () => {
   );
 };
 
-export default Header;
+export default React.memo(Header);

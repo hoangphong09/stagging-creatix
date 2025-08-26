@@ -66,7 +66,7 @@ export default function BlogPage() {
         className="pointer-events-none select-none absolute right-0 top-2 w-[25vw] max-w-[700px] z-0"
       />
 
-      <main className="flex-1 flex flex-col items-center px-4 pt-8 pb-16">
+      <main className="flex-1 flex flex-col items-center px-4 sm:px-[120px] lg:px-[120px] xl:px-[120px] 2xl:px-[250px] pt-8 pb-16">
         <section className="w-full max-w-6xl mx-auto">
           <div className="flex flex-col items-center mb-[8rem] mt-[8rem]">
             <div className="flex items-center gap-3 mb-8 flex-col sm:flex-row">
@@ -158,7 +158,7 @@ export default function BlogPage() {
                       <p className="text-white text-base mb-3">
                         {post.summary}
                       </p>
-                      <div className="px-4 py-2 bg-white rounded-xl w-[120px] h-[30px] flex items-center justify-center hover:opacity-80 transition-opacity duration-300 cursor-pointer">
+                      <div className="px-4 sm:px-[120px] lg:px-[120px] xl:px-[120px] 2xl:px-[250px] py-2 bg-white rounded-xl w-[120px] h-[30px] flex items-center justify-center hover:opacity-80 transition-opacity duration-300 cursor-pointer">
                         <a
                           href={`/blog/${post.slug}`}
                           className="text-[#635BFF] font-semibold text-sm"

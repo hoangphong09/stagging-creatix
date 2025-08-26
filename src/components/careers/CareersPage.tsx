@@ -33,8 +33,8 @@ export default function CareersPage() {
 
   return (
     <div className="min-h-screen flex flex-col relative overflow-hidden">
-      <main className="flex-1 flex flex-col items-center px-4 py-10">
-        <div className="max-w-[82rem] w-full flex flex-col items-center">
+      <main className="flex-1 flex flex-col items-center px-4 sm:px-[120px] lg:px-[120px] xl:px-[120px] 2xl:px-[250px] py-10">
+        <div className="max-w-full w-full flex flex-col items-center">
           <h1 className="text-[36px] sm:text-[64px] font-extrabold text-center font-vietnam-pro text-[#0c0c0c] tracking-[0.025px] mt-20">
             Join the Creatix
           </h1>
@@ -54,10 +54,10 @@ export default function CareersPage() {
                 height: "auto",
                 minHeight: 380,
               }}
-              className="max-w-[82rem] w-full"
+              className="max-w-full w-full"
             />
           </div>
-          <section className="w-full max-w-[82rem] mx-auto mt-16 mb-20">
+          <section className="w-full max-w-full mx-auto mt-16 mb-20">
             <div className="text-center mb-16 space-y-4 z-10 px-2 sm:px-64 flex justify-center flex-col items-center">
               <div className="inline-flex items-center px-3 py-2 bg-[#635BFF1A] rounded-[8px]">
                 <span className="text-[14px] font-inter font-semibold text-[#635BFF] tracking-[0.025px] leading-[100%]">

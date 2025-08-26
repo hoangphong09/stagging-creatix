@@ -1,4 +1,5 @@
-export * from './button';
-export * from './DownloadButton';
-export * from './ProductCard';
-export * from './ServiceCard';
+// UI Components
+export { Button, buttonVariants } from './button';
+export { DownloadButton } from './DownloadButton';
+export { ProductCard } from './ProductCard';
+export { ServiceCard } from './ServiceCard';

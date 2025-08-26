@@ -1,7 +1,21 @@
-// Performance optimization utilities
+import React from 'react';
 
 /**
- * Debounce function to limit the rate at which a function can fire
+ * Memoize a component with proper display name
+ */
+export function memoWithDisplayName<T extends React.ComponentType<any>>(
+  Component: T,
+  displayName?: string
+): React.MemoExoticComponent<T> {
+  const MemoizedComponent = React.memo(Component);
+  if (displayName) {
+    MemoizedComponent.displayName = displayName;
+  }
+  return MemoizedComponent;
+}
+
+/**
+ * Debounce function for performance optimization
  */
 export function debounce<T extends (...args: any[]) => any>(
   func: T,
@@ -15,7 +29,7 @@ export function debounce<T extends (...args: any[]) => any>(
 }
 
 /**
- * Throttle function to ensure a function is called at most once in a specified time period
+ * Throttle function for performance optimization
  */
 export function throttle<T extends (...args: any[]) => any>(
   func: T,

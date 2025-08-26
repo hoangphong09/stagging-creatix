@@ -14,7 +14,7 @@ export interface Service {
   description: string;
 }
 
-export const SERVICES: Service[] = [
+export const SERVICES: readonly Service[] = [
   {
     icon: BarChart3,
     title: "Analytics & Marketing",

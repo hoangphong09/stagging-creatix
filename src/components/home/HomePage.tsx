@@ -1,9 +1,10 @@
 
+import React from "react";
 import Career from "./components/Carrers";
 import CTA from "./components/CTA";
 import Hero from "./components/Hero";
 
-export default function HomePage() {
+const HomePage = () => {
   return (
     <div className="min-h-screen">
       <div className="relative z-10">
@@ -13,4 +14,6 @@ export default function HomePage() {
       <CTA />
     </div>
   );
-}
+};
+
+export default React.memo(HomePage);

@@ -4,6 +4,9 @@ export * from './service';
 export * from './post';
 export * from './job';
 
+// Type definitions
+export type SupportedLanguage = 'en' | 'vi';
+
 // Common configuration
 export const APP_CONFIG = {
   company: {
@@ -30,8 +33,11 @@ export const APP_CONFIG = {
     appStore: 'https://apps.apple.com/us/app/magic-eraser-remove-object/id1619950778',
   },
   languages: {
-    supported: ['en', 'vi'],
-    default: 'en',
+    supported: ['en', 'vi'] as const,
+    default: 'en' as const,
+  } satisfies {
+    supported: readonly SupportedLanguage[];
+    default: SupportedLanguage;
   },
 } as const;
 

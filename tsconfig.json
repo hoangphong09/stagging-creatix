@@ -30,7 +30,9 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "exactOptionalPropertyTypes": true
+    "exactOptionalPropertyTypes": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true
   },
   "include": [
     "next-env.d.ts",

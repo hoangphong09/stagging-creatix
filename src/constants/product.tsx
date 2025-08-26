@@ -8,7 +8,7 @@ export interface Product {
   link: string;
 }
 
-export const PRODUCTS: Product[] = [
+export const PRODUCTS: readonly Product[] = [
   {
     title: "Magic Eraser",
     description: "Remove unwanted objects from photos quickly and accurately.",

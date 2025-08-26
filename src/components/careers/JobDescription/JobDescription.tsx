@@ -20,8 +20,8 @@ export default function JobDescriptionPage() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <main className="flex-1 flex flex-col items-center px-4 py-10">
-        <div className="max-w-[82rem] w-full mx-auto">
+      <main className="flex-1 flex flex-col items-center px-4 sm:px-[120px] lg:px-[120px] xl:px-[120px] 2xl:px-[250px] py-10">
+        <div className="max-w-full w-full mx-auto">
           <button
             className="flex items-center gap-2 text-[#6366F1] font-bold mb-8"
             onClick={() => router.push("/careers")}

@@ -1,15 +1,15 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useLocalStorage } from './useLocalStorage';
-import { APP_CONFIG } from '@/constants';
+import { APP_CONFIG, type SupportedLanguage } from '@/constants';
 
 export function useLanguage() {
-  const [currentLanguage, setCurrentLanguage] = useLocalStorage<string>(
+  const [currentLanguage, setCurrentLanguage] = useLocalStorage<SupportedLanguage>(
     'creatix-language',
-    APP_CONFIG.languages.default
+    APP_CONFIG.languages.default as SupportedLanguage
   );
   const [isLoadingLanguage, setIsLoadingLanguage] = useState(false);
 
-  const changeLanguage = useCallback(async (lang: 'en' | 'vi') => {
+  const changeLanguage = useCallback(async (lang: SupportedLanguage) => {
     if (!APP_CONFIG.languages.supported.includes(lang)) {
       console.warn(`Unsupported language: ${lang}`);
       return;
@@ -86,8 +86,8 @@ export function useLanguage() {
         setCurrentLanguage('en');
       } else {
         const langMatch = currentLang.match(/\/([a-z]{2})$/);
-        if (langMatch && APP_CONFIG.languages.supported.includes(langMatch[1] as 'en' | 'vi')) {
-          setCurrentLanguage(langMatch[1] as 'en' | 'vi');
+        if (langMatch && APP_CONFIG.languages.supported.includes(langMatch[1] as SupportedLanguage)) {
+          setCurrentLanguage(langMatch[1] as SupportedLanguage);
         }
       }
     }
@@ -97,7 +97,7 @@ export function useLanguage() {
     currentLanguage,
     isLoadingLanguage,
     changeLanguage,
-    supportedLanguages: APP_CONFIG.languages.supported,
+    supportedLanguages: APP_CONFIG.languages.supported as readonly SupportedLanguage[],
   };
 }
 

@@ -2,7 +2,7 @@
 
 export default function StoryPage() {
   return (
-    <div className="min-h-screen flex flex-col items-center px-4 pb-16 relative overflow-hidden">
+    <div className="min-h-screen flex flex-col items-center px-4 sm:px-[120px] lg:px-[120px] xl:px-[120px] 2xl:px-[250px] pb-16 relative overflow-hidden">
       {/* Decorative objects */}
       <img
         src="/hire_yellow_shadow_image.svg"
@@ -28,7 +28,7 @@ export default function StoryPage() {
       />
 
       {/* Main Title */}
-      <div className="w-full max-w-[82rem] mx-auto text-center mt-32 mb-8 z-10 flex flex-col items-center justify-center gap-4">
+      <div className="w-full max-w-full mx-auto text-center mt-32 mb-8 z-10 flex flex-col items-center justify-center gap-4">
         <h1 className="text-[35px] sm:text-[70px] font-extrabold text-[#0C0C0C] leading-[100%] tracking-[0.025px] mb-2 font-vietnam-pro">
           “ We are Creatix ”
         </h1>
@@ -48,7 +48,7 @@ export default function StoryPage() {
       </div>
 
       {/* About Us Section */}
-      <div className="w-full max-w-[82rem] mx-auto grid md:grid-cols-2 gap-12 mt-20 items-center z-10">
+      <div className="w-full max-w-full mx-auto grid md:grid-cols-2 gap-12 mt-20 items-center z-10">
         <div>
           <div className="mb-2 bg-[#635BFF1A] px-3 py-3 flex justify-center max-w-32 rounded-[8px]">
             <span className="text-[14px] font-inter font-semibold text-[#635BFF] leading-[100%] tracking-[0.025px]">
@@ -81,7 +81,7 @@ export default function StoryPage() {
       </div>
 
       {/* Culture Section */}
-      <div className="w-full max-w-[82rem] mx-auto grid md:grid-cols-2 gap-12 mt-20 items-center z-10">
+      <div className="w-full max-w-full mx-auto grid md:grid-cols-2 gap-12 mt-20 items-center z-10">
         <div className="flex justify-center order-2 md:order-1">
           <div className="relative">
             <img
