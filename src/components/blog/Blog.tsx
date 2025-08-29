@@ -158,13 +158,13 @@ export default function BlogPage() {
                       <p className="text-white text-base mb-3">
                         {post.summary}
                       </p>
-                      <div className="px-4 sm:px-[120px] lg:px-[120px] xl:px-[120px] 2xl:px-[250px] py-2 bg-white rounded-xl w-[120px] h-[30px] flex items-center justify-center hover:opacity-80 transition-opacity duration-300 cursor-pointer">
+                      <div className="">
                         <a
                           href={`/blog/${post.slug}`}
-                          className="text-[#635BFF] font-semibold text-sm"
+                          className="text-[#ffffff] font-semibold text-[16px] leading-[100%] tracking-[0.025px]"
                           tabIndex={isCurrent ? 0 : -1}
                         >
-                          Read more
+                          Read more →
                         </a>
                       </div>
                     </div>
@@ -220,7 +220,7 @@ export default function BlogPage() {
               <Link
                 key={`other-post-${post.title}-${idx}`}
                 href={`/blog/${post.slug}`}
-                className="bg-transparent rounded-2xl overflow-hidden flex flex-col transition hover:shadow-xl"
+                className="bg-transparent rounded-2xl overflow-hidden flex flex-col transition hover:shadow-xl px-4"
               >
                 <div className="relative w-full h-[250px] overflow-hidden">
                   <img

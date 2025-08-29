@@ -58,7 +58,7 @@ export default function BlogDescriptionPage() {
   }
 
   return (
-          <div className="min-h-screen flex flex-col px-4 sm:px-[120px] lg:px-[120px] xl:px-[120px] 2xl:px-[250px] pt-8 pb-16">
+    <div className="min-h-screen flex flex-col px-4 sm:px-[120px] lg:px-[120px] xl:px-[120px] 2xl:px-[250px] pt-8 pb-16">
       <div className="max-w-5xl w-full mx-auto">
         <button
           className="flex items-center gap-2 text-[#6366F1] font-bold mb-8"
@@ -80,7 +80,7 @@ export default function BlogDescriptionPage() {
           {BLOG_CONTENT[blog.slug as keyof typeof BLOG_CONTENT]}
         </div>
       </div>
-      <div className="max-w-6xl w-full mx-auto mt-8">
+      <div className="max-w-6xl w-full mx-auto mt-8 p-0">
         <div
           className="text-xl font-bold mb-2 border-l-4 pl-3"
           style={{ borderColor: "#8B5CF6" }}
@@ -102,7 +102,7 @@ export default function BlogDescriptionPage() {
                 alt={post.title}
                 className="w-full h-[180px] object-cover mb-4"
               />
-              <div className="px-4 sm:px-[120px] lg:px-[120px] xl:px-[120px] 2xl:px-[250px] pb-4 flex-1 flex flex-col justify-between">
+              <div className="px-4 pb-4 flex-1 flex flex-col justify-between">
                 <h4 className="font-semibold text-base mb-5 text-creatix-gray-900">
                   {post.title}
                 </h4>

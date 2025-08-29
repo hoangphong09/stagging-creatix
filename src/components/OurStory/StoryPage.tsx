@@ -82,7 +82,7 @@ export default function StoryPage() {
 
       {/* Culture Section */}
       <div className="w-full max-w-full mx-auto grid md:grid-cols-2 gap-12 mt-20 items-center z-10">
-        <div className="flex justify-center order-2 md:order-1">
+        <div className="flex justify-start order-2 md:order-1">
           <div className="relative">
             <img
               src="/story_2.png"
