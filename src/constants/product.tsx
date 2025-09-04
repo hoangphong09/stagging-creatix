@@ -13,7 +13,7 @@ export const PRODUCTS: readonly Product[] = [
     title: "Magic Eraser",
     description: "Remove unwanted objects from photos quickly and accurately.",
     image: "/home_product_1.png",
-    logo: "/app_logo.png",
+    logo: "/prd_app_logo.png",
     badgeColor: "bg-[#F3F3F3]",
     titleColor: "text-creatix-gray-900",
     link: "https://stagging-magic-eraser.vercel.app/",
@@ -34,6 +34,7 @@ export const PRODUCTS: readonly Product[] = [
     description:
       "Translate Figma text into any language with Google Gemini AI. Auto-detect, batch translate, and keep the original layout.",
     image: "/home_product_3.png",
+    logo: "/translate_logo.png",
     badgeColor: "bg-[#F3F3F3]",
     titleColor: "text-creatix-gray-900",
     link: "https://www.figma.com/community/plugin/1493925748627016409/translate-text-with-gemini",

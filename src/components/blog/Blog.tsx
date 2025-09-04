@@ -220,14 +220,14 @@ export default function BlogPage() {
               <Link
                 key={`other-post-${post.title}-${idx}`}
                 href={`/blog/${post.slug}`}
-                className="bg-transparent rounded-2xl overflow-hidden flex flex-col transition hover:shadow-xl px-4"
+                className="bg-transparent rounded-2xl overflow-hidden flex flex-col transition"
               >
                 <div className="relative w-full h-[250px] overflow-hidden">
                   <img
                     src={post.image}
                     alt={post.title}
                     loading="lazy"
-                    className="w-[500px] h-[250px] object-cover transition-transform duration-300 hover:scale-105"
+                    className="w-[500px] h-[250px] object-cover transition-transform duration-300 rounded-2xl border border-[#42423D1A]"
                   />
                   {post.tag && (
                     <span className="absolute top-3 left-3 bg-[#8B5CF6] text-white text-xs font-semibold px-3 py-1 rounded-lg shadow">

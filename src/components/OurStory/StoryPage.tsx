@@ -58,7 +58,7 @@ export default function StoryPage() {
           <h3 className="text-[28px] sm:text-[48px] font-extrabold bg-gradient-to-r from-[#392F50] to-[#7344C8] bg-clip-text text-transparent mb-4 font-inter leading-[80px] tracking-[0.025px]">
             About Us
           </h3>
-          <p className="text-[18px] text-[#0C0C0C] mb-2 font-inter font-normal leading-[35px] tracking-[1px]">
+          <p className="text-[18px] text-[#0C0C0C] mb-2 font-inter font-normal leading-[35px] tracking-[0.5px]">
             <b>
               <i>"</i>Creatix Technology
             </b>{" "}
@@ -106,7 +106,7 @@ export default function StoryPage() {
           <h3 className="text-[28px] sm:text-[48px] font-extrabold bg-gradient-to-r from-[#392F50] to-[#7344C8] bg-clip-text text-transparent mb-4 font-inter leading-[80px] tracking-[0.025px]">
             Culture of Creatix
           </h3>
-          <p className="text-[16px] sm:text-[18px] text-[#0C0C0C] mb-2 font-inter font-normal leading-[35px] tracking-[1px]">
+          <p className="text-[16px] sm:text-[18px] text-[#0C0C0C] mb-2 font-inter font-normal leading-[35px] tracking-[0.5px]">
             <i>"</i>At <b>Creatix</b>, we honor creativity, innovation, and
             collaboration. We build a dynamic work environment where every idea
             is heard and every member can develop.<i>"</i>

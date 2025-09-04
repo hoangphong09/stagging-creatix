@@ -173,8 +173,8 @@ const Header = () => {
                 href={`#${item.id}`}
                 className={`text-base ${
                   activeMenu === item.key
-                    ? "font-semibold text-blue-600 underline decoration-[1.5px] underline-offset-4"
-                    : "font-medium text-gray-900 hover:text-blue-600 transition-colors"
+                    ? "font-bold font-inter text-[16px] text-[#635BFF] leading-[25px] tracking-[0.025px] underline decoration-[1.5px] underline-offset-4"
+                    : "font-medium font-inter text-[16px] text-[#0C0C0C] leading-[25px] tracking-[0.025px] transition-colors hover:text-[#635BFF]"
                 }`}
                 onClick={handleMenuClick(item.key, item.id)}
               >

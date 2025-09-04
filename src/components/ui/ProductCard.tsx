@@ -15,7 +15,7 @@ export const ProductCard: React.FC<ProductCardProps> = React.memo(
 
     return (
       <div
-        className={`bg-white rounded-3xl shadow-md hover:shadow-xl p-1 transition-shadow duration-300 overflow-hidden flex flex-col h-full ${className}`}
+        className={`bg-white rounded-3xl shadow-sm hover:shadow-xl p-1 transition-shadow duration-300 overflow-hidden flex flex-col h-full ${className}`}
       >
         {/* Product Image */}
         <div className="relative">

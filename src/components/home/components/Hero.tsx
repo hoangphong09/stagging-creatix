@@ -253,7 +253,7 @@ const Hero = () => {
             >
               Feature Products
             </p>
-            <p className="font-inter text-[16px] sm:text-[20px] text-[#383838] font-medium opacity-80 leading-[30px] tracking-[0.25px]">
+            <p className="font-inter text-[16px] sm:text-[20px] text-[#383838] font-medium opacity-80 leading-[30px] tracking-[1px]">
               "We carefully select the best products – combining practicality,
               great user experience, and simplicity in every action."
             </p>
